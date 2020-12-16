@@ -5,6 +5,8 @@
 import GlobalController from './controllers/global.js';
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
+import DeathsController from './controllers/deaths.js';
+import RecoveriesController from './controllers/recoveries.js';
 import CovidModel from './models/covid.js';
 import Api from './api.js';
 
@@ -108,11 +110,15 @@ covidModel.setData(mock);
 const global = new GlobalController(main, mock);
 const updated = new UpdatedController(main, mock);
 const countries = new CountriesController(main, mock);
+const deaths = new DeathsController(main, mock);
+const recoveries = new RecoveriesController(main, mock);
 
 // отрисовываем компонент на странице
 global.render();
 updated.render();
 countries.render();
+deaths.render();
+recoveries.render();
 /* 
 
 api.getGlobalData()

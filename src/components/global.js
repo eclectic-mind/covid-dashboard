@@ -1,6 +1,7 @@
 import AbstractComponent from './abstract-component.js';
 
-export const makeGlobalMarkup = (sum) => {
+export const makeGlobalMarkup = (data) => {
+  const sum = data.global.totalConfirmed;
   return (
     `<div class="global_cases">
       <h4>Global Cases</h4>
@@ -26,8 +27,8 @@ export default class Global extends AbstractComponent {
 
   getTemplate() {
     // return makeGlobalMarkup(this._covidModel.getGlobalData());
-    const sum = this._data.global.totalConfirmed;
-    return makeGlobalMarkup(sum);
+    // const sum = this._data.global.totalConfirmed;
+    return makeGlobalMarkup(this._data);
   }
 
   /* 
