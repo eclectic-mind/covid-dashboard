@@ -1,9 +1,9 @@
 import AbstractComponent from './abstract-component.js';
 
 export const makeCountryRow = (countryData, filter) => {
-  const name = countryData.country;
-  const totalCases = countryData.totalConfirmed;
-  const isActive = countryData.country === filter ? `active` : `regular`;
+  const name = countryData.Country;
+  const totalCases = countryData.TotalConfirmed;
+  const isActive = countryData.Country === filter ? `active` : `regular`;
   return (
     `<tr class="${isActive}">
       <td class="quantity">${totalCases}</td>
@@ -13,7 +13,8 @@ export const makeCountryRow = (countryData, filter) => {
 };
 
 export const makeCountriesTableMarkup = (data, filter) => {
-  const rows = data.map((item) => makeCountryRow(item, filter));
+  const countries = data.Countries;
+  const rows = countries.map((item) => makeCountryRow(item, filter));
   return (
     `<div class="countries">
       <h4>Cases by Country/Region/Sovereignty</h4>
@@ -42,7 +43,6 @@ export default class Countries extends AbstractComponent {
   }
 
   getTemplate() {
-    // return makeGlobalMarkup(this._covidModel.getGlobalData());
     return makeCountriesTableMarkup(this._data, this._filter);
 
   /* 

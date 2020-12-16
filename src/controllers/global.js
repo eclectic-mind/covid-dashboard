@@ -1,25 +1,18 @@
 import {render, RenderPosition} from '../utils.js';
 import GlobalComponent from '../components/global.js';
 
-export default class GlobalsController {
-/* 
-  constructor(container, dataModel) {
-    this._container = container;
-    this._dataModel = dataModel;
-  }
-*/
+export default class GlobalController {
 
-  constructor(container, data) {
+  constructor(container, model) {
     this._container = container;
-    this._data = data;
+    this._model = model;
+    this._global = null;
   }
 
   render() {
-    // const allData = this._dataModel.getData();
-    // const global = allData['Global'];
-    // const sum = global['TotalConfirmed'];
-    // this._global = new GlobalComponent(sum);
-    this._global = new GlobalComponent(this._data);
+    const data = this._model.getData();
+    console.log(data);
+    this._global = new GlobalComponent(data);
     render(this._container, this._global, RenderPosition.BEFOREEND);
   }
 

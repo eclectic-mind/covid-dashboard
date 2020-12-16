@@ -1,7 +1,7 @@
 import AbstractComponent from './abstract-component.js';
 
 export const makeGlobalMarkup = (data) => {
-  const sum = data.global.totalConfirmed;
+  const sum = data.Global.TotalConfirmed;
   return (
     `<div class="global_cases">
       <h4>Global Cases</h4>

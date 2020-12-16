@@ -1,8 +1,8 @@
 import AbstractComponent from './abstract-component.js';
 
 export const makeDeathRow = (countryData) => {
-  const name = countryData.country;
-  const totalDeaths = countryData.totalDeaths;
+  const name = countryData.Country;
+  const totalDeaths = countryData.TotalDeaths;
   return (
     `<tr>
       <td><span>${totalDeaths} died</span><br>${name}</td>
@@ -11,8 +11,8 @@ export const makeDeathRow = (countryData) => {
 };
 
 export const makeDeathsTableMarkup = (data) => {
-  const sum = data.global.totalDeaths;
-  const countries = data.countries;
+  const sum = data.Global.TotalDeaths;
+  const countries = data.Countries;
   const rows = countries.map((item) => makeDeathRow(item));
   
   return (

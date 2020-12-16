@@ -3,17 +3,15 @@ import UpdatedComponent from '../components/updated.js';
 
 export default class UpdatedController {
 
-  constructor(container, data) {
+  constructor(container, model) {
     this._container = container;
-    this._data = data;
+    this._model = model;
+    this._updated = null;
   }
 
   render() {
-    // const allData = this._dataModel.getData();
-    // const global = allData['Global'];
-    // const sum = global['TotalConfirmed'];
-    // this._global = new GlobalComponent(sum);
-    const date = this._data.date;
+    const data = this._model.getData();
+    const date = data.Date;
     this._updated = new UpdatedComponent(date);
     render(this._container, this._updated, RenderPosition.BEFOREEND);
   }

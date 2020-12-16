@@ -3,16 +3,18 @@ import DeathsComponent from '../components/deaths.js';
 
 export default class DeathsController {
 
-  constructor(container, data, filter = null) {
+  constructor(container, model, filter = null) {
     this._container = container;
-    this._data = data;
+    this._model = model;
     this._filter = filter;
+    this._deaths = null;
   }
 
   render() {
-    const dataFiltered = filterByCountry(this._data, this._filter);
-    const recoveries = new DeathsComponent(dataFiltered);
-    render(this._container, recoveries, RenderPosition.BEFOREEND);
+    const data = this._model.getData();
+    const dataFiltered = filterByCountry(data, this._filter);
+    this._deaths = new DeathsComponent(dataFiltered);
+    render(this._container, this._deaths, RenderPosition.BEFOREEND);
   }
 
 }

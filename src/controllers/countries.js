@@ -9,16 +9,17 @@ export default class CountriesController {
   }
 
   */
-  constructor(container, data, filter = null) {
+  constructor(container, model, filter = null) {
     this._container = container;
-    this._data = data;
+    this._model = model;
     this._filter = filter;
+    this._countries = null;
   }
 
   render() {
-    const countriesData = this._data.countries;
-    const countries = new CountriesComponent(countriesData, this._filter);
-    render(this._container, countries, RenderPosition.BEFOREEND);
+    const data = this._model.getData();
+    this._countries = new CountriesComponent(data, this._filter);
+    render(this._container, this._countries, RenderPosition.BEFOREEND);
   }
 
 }

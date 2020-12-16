@@ -8,19 +8,12 @@ import CountriesController from './controllers/countries.js';
 import DeathsController from './controllers/deaths.js';
 import RecoveriesController from './controllers/recoveries.js';
 import CovidModel from './models/covid.js';
-import Api from './api.js';
 
 const END_POINT = `https://api.covid19api.com`;
 
 // находим наш #main - отправную точку приложения, что-то типа #root в Реакте
 
 const main = document.querySelector('#main');
-
-// получаем данные и запускаем их в модель
-
-// const api = new Api(END_POINT);
-// const covidModel = new CovidModel();
-// covidModel.setData(api);
 
 // моковые данные для тренировки - потом заменим их на реальные данные с сервера
 
@@ -103,31 +96,33 @@ date: '2020-04-05T06:37:00Z'
 };
 
 const covidModel = new CovidModel();
-covidModel.setData(mock);
 
-// создаем компонент
-// const global = new GlobalController(main, covidModel);
-const global = new GlobalController(main, mock);
-const updated = new UpdatedController(main, mock);
-const countries = new CountriesController(main, mock);
-const deaths = new DeathsController(main, mock);
-const recoveries = new RecoveriesController(main, mock);
+// получаем данные и запускаем их в модель
+ 
+fetch(`${END_POINT}/summary`)
+  .then((response) => {
+    return response.text();
+  })
+  .then((text) => {
+    const api = JSON.parse(text);
+    console.log(api);
+    covidModel.setData(api);
+    console.log(covidModel);
 
-// отрисовываем компонент на странице
+// создаем компоненты
+
+const global = new GlobalController(main, covidModel);
+const updated = new UpdatedController(main, covidModel);
+const countries = new CountriesController(main, covidModel);
+const deaths = new DeathsController(main, covidModel);
+const recoveries = new RecoveriesController(main, covidModel);
+
+// отрисовываем компоненты на странице
+
 global.render();
 updated.render();
 countries.render();
 deaths.render();
 recoveries.render();
-/* 
 
-api.getGlobalData()
-  .then((data) => {
-    covidModel.setData(data);
-})
-  .finally(() => {
-    const global = new GlobalController(main, covidModel);
-    global.render();
-  });
-
-*/
+});
