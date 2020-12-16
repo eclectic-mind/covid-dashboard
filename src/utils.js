@@ -44,3 +44,14 @@ export const remove = (component) => {
   component.getElement().remove();
   component.removeElement();
 };
+
+export const filterByCountry = (data, filter) => {
+  if (filter === null) return data;
+  let result = {};
+  result.global = data.global;
+  let countriesArray = data.countries;
+  let filtered = countriesArray.filter((item) => item.country === filter);
+  result.countries = filtered;
+  return result;
+  console.log(result);
+};
