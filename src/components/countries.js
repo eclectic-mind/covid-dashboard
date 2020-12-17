@@ -3,9 +3,11 @@ import AbstractComponent from './abstract-component.js';
 export const makeCountryRow = (countryData, filter) => {
   const name = countryData.Country;
   const totalCases = countryData.TotalConfirmed;
-  const isActive = countryData.Country === filter ? `active` : `regular`;
+  const id = countryData.CountryCode;
+  const trName = `c-${id}`;
+  const isActive = countryData.CountryCode === filter ? `active` : ``;
   return (
-    `<tr class="${isActive}">
+    `<tr class="${trName} ${isActive}">
       <td class="quantity">${totalCases}</td>
       <td class="country-name">${name}</td>
     </tr>`
@@ -26,15 +28,6 @@ export const makeCountriesTableMarkup = (data, filter) => {
 };
 
 export default class Countries extends AbstractComponent {
-/*
-  constructor(covidModel, country) {
-    super();
-    this._covidModel = covidModel;
-    // this._onDataChange = this._onDataChange.bind(this);
-    // this.rerender = this.rerender.bind(this);
-    this._country = country;
-  }
-  */
 
  constructor(data, filter) {
   super();
@@ -44,15 +37,30 @@ export default class Countries extends AbstractComponent {
 
   getTemplate() {
     return makeCountriesTableMarkup(this._data, this._filter);
-
-  /* 
-  rerender() {
-    super.rerender();
   }
 
+  setClickHandler(handler) {
+    this.getElement().addEventListener('click', handler);
+  }
+
+  recoveryListeners() {
+    this.setClickHandler();
+  }
+
+/*
+  rerender(newElement) {
+    super.rerender(newElement);
+  }
+
+  updateCountriesList(data, filter) {
+    this._data = data;
+    this._filter = filter;
+    this.rerender();
+  }
+ 
   _onDataChange() {
     this.rerender();
   }
   */
-  }
+  
 }

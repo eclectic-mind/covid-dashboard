@@ -42,7 +42,7 @@ export const replace = (newComponent, oldComponent) => {
 
 export const remove = (component) => {
   component.getElement().remove();
-  component.removeElement();
+  // component.removeElement();
 };
 
 export const filterByCountry = (data, filter) => {
@@ -53,5 +53,14 @@ export const filterByCountry = (data, filter) => {
   let filtered = countriesArray.filter((item) => item.country === filter);
   result.countries = filtered;
   return result;
-  console.log(result);
+};
+
+export const filterById = (data, filter) => {
+  if (filter === null) return data;
+  let result = {};
+  result.Global = data.Global;
+  let countriesArray = data.Countries;
+  let filtered = countriesArray.filter((item) => item.CountryCode === filter);
+  result.Countries = filtered;
+  return result;
 };

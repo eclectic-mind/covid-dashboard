@@ -5,8 +5,6 @@
 import GlobalController from './controllers/global.js';
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
-import DeathsController from './controllers/deaths.js';
-import RecoveriesController from './controllers/recoveries.js';
 import CovidModel from './models/covid.js';
 
 const END_POINT = `https://api.covid19api.com`;
@@ -114,15 +112,11 @@ fetch(`${END_POINT}/summary`)
 const global = new GlobalController(main, covidModel);
 const updated = new UpdatedController(main, covidModel);
 const countries = new CountriesController(main, covidModel);
-const deaths = new DeathsController(main, covidModel);
-const recoveries = new RecoveriesController(main, covidModel);
 
 // отрисовываем компоненты на странице
 
 global.render();
 updated.render();
 countries.render();
-deaths.render();
-recoveries.render();
 
 });

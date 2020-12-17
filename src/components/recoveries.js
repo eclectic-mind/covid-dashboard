@@ -1,19 +1,23 @@
 import AbstractComponent from './abstract-component.js';
+import {filterById} from '../utils.js';
 
 export const makeRecRow = (countryData) => {
   const name = countryData.Country;
   const totalRec = countryData.TotalRecovered;
+  const id = countryData.CountryCode;
+  const trName = `c-${id}`;
   return (
-    `<tr>
-      <td><span>${totalRec} recovered</span><br>${name}</td>
+    `<tr class="${trName}">
+      <td>${totalRec} recovered<br>${name}</td>
     </tr>`
   );
 };
 
-export const makeRecoveriesTableMarkup = (data) => {
+export const makeRecoveriesTableMarkup = (data, filter) => {
+  const dataFiltered = filterById(data, filter);
   const sum = data.Global.TotalRecovered;
-  const countries = data.Countries;
-  const rows = countries.map((item) => makeRecRow(item));
+  const countries = dataFiltered.Countries;
+  const rows = countries.map((item) => makeRecRow(item, filter));
   
   return (
     `<div class="recoveries">
@@ -28,12 +32,21 @@ export const makeRecoveriesTableMarkup = (data) => {
 
 export default class Recoveries extends AbstractComponent {
 
- constructor(data) {
+ constructor(data, filter) {
   super();
   this._data = data;
+  this._filter = filter;
   }
 
   getTemplate() {
-    return makeRecoveriesTableMarkup(this._data);
+    return makeRecoveriesTableMarkup(this._data, this._filter);
+  }
+
+  setClickHandler(handler) {
+    this.getElement().addEventListener('click', handler);
+  }
+
+  recoveryListeners() {
+    this.setClickHandler();
   }
 }
