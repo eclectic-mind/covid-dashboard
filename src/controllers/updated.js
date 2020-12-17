@@ -11,8 +11,10 @@ export default class UpdatedController {
 
   render() {
     const data = this._model.getData();
-    const date = data.Date;
-    this._updated = new UpdatedComponent(date);
+    const dateStr = data.Date;
+    // const date = Date.parse(dateStr);
+    const realDate = new Date(dateStr);
+    this._updated = new UpdatedComponent(realDate);
     render(this._container, this._updated, RenderPosition.BEFOREEND);
   }
 

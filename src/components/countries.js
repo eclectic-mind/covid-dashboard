@@ -3,7 +3,7 @@ import AbstractComponent from './abstract-component.js';
 export const makeCountryRow = (countryData, filter) => {
   const name = countryData.Country;
   const totalCases = countryData.TotalConfirmed;
-  const id = countryData.CountryCode;
+  const id = countryData.CountryCode.toLowerCase();
   const trName = `c-${id}`;
   const isActive = countryData.CountryCode === filter ? `active` : ``;
   return (
@@ -39,12 +39,12 @@ export default class Countries extends AbstractComponent {
     return makeCountriesTableMarkup(this._data, this._filter);
   }
 
-  setClickHandler(handler) {
-    this.getElement().addEventListener('click', handler);
+  recoveryListeners(handler) {
+    this.setClickHandler(handler);
   }
 
-  recoveryListeners() {
-    this.setClickHandler();
+  setClickHandler(handler) {
+    this.getElement().addEventListener('click', handler);
   }
 
 /*

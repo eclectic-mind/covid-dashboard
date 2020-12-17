@@ -1,10 +1,15 @@
 import AbstractComponent from './abstract-component.js';
 
 export const makeUpdatedMarkup = (date) => {
+  console.log(date, typeof date);
+  const month = +date.getMonth() + 1;
+  const year = date.getFullYear();
+  const day = date.getDate();
+  const formattedDate = `${month}/${day}/${year}`;
   return (
     `<div class="updated">
-      <p>Last Updated at (M/D/YYYY)</p>
-      <h4>${date}</h4>
+      <p>Last updated at</p>
+      <h4>${formattedDate}</h4>
     </div>`
   );
 };
@@ -17,18 +22,7 @@ export default class Updated extends AbstractComponent {
   }
 
   getTemplate() {
-    // return makeGlobalMarkup(this._covidModel.getGlobalData());
     return makeUpdatedMarkup(this._data);
   }
-
-  /* 
-  rerender() {
-    super.rerender();
-  }
-
-  _onDataChange() {
-    this.rerender();
-  }
-  */
 
 }

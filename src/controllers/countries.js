@@ -23,42 +23,39 @@ export default class CountriesController {
     console.log('old filter', this._filter);
 
     this._countries.setClickHandler((evt) => {
-      this.onFilterChange(evt);
-      console.log('newFilter', this._filter);
-      this.removeLists();
-      this.createLists(data);
-      this._countries.recoveryListeners();
-      this.renderLists();
+      this.countriesClickHandler(evt, data);
     });
 
     this._deaths.setClickHandler((evt) => {
-      this.onFilterChange(evt);
-      console.log('newFilter', this._filter);
-      this.removeLists();
-      this.createLists(data);
-      this._deaths.recoveryListeners();
-      this.renderLists();
+      this.countriesClickHandler(evt, data);
     });
 
     this._recoveries.setClickHandler((evt) => {
-      this.onFilterChange(evt);
-      console.log('newFilter', this._filter);
-      this.removeLists();
-      this.createLists(data);
-      this._recoveries.recoveryListeners();
-      this.renderLists();
+      this.countriesClickHandler(evt, data);
     });
 
     this.renderLists();
-    
+  }
+
+  countriesClickHandler(evt, data) {
+    this.onFilterChange(evt);
+    this.countriesRerender(evt, data);
+    // elem.setClickHandler(this.countriesClickHandler);
+  }
+
+  countriesRerender(evt, data) {
+    this.removeLists();
+    this.createLists(data);
+    this.renderLists();
   }
 
   onFilterChange(evt) {
     evt.preventDefault();
     const parent = evt.target.parentElement;
     const chosenCountry = parent.classList[0].slice(2);
-    const newFilter = chosenCountry[0].toUpperCase() + chosenCountry.slice(1);
+    const newFilter = chosenCountry.toUpperCase();
     this._filter = newFilter;
+    console.log('newFilter', this._filter);
   }
 
   createLists(data) {
