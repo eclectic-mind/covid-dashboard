@@ -3,12 +3,13 @@ import AbstractComponent from './abstract-component.js';
 export const makeCountryRow = (countryData, filter) => {
   const name = countryData.Country;
   const totalCases = countryData.TotalConfirmed;
+  const todayCases = countryData.NewConfirmed;
   const id = countryData.CountryCode.toLowerCase();
   const trName = `c-${id}`;
   const isActive = countryData.CountryCode === filter ? `active` : ``;
   return (
     `<tr class="${trName} ${isActive}">
-      <td class="quantity">${totalCases}</td>
+      <td class="quantity">${totalCases} (${todayCases} today)</td>
       <td class="country-name">${name}</td>
     </tr>`
   );

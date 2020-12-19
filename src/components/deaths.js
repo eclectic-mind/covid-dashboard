@@ -3,12 +3,15 @@ import {filterById} from '../utils.js';
 
 export const makeDeathRow = (countryData) => {
   const name = countryData.Country;
+  const todayDeaths = countryData.NewDeaths;
   const totalDeaths = countryData.TotalDeaths;
   const id = countryData.CountryCode;
   const trName = `c-${id}`;
   return (
     `<tr class="${trName}">
-      <td>${totalDeaths} died<br>${name}</td>
+      <td>${totalDeaths} died<br>
+      (${todayDeaths} today)<br>
+      ${name}</td>
     </tr>`
   );
 };

@@ -2,6 +2,7 @@ import {render, replace, remove, RenderPosition, filterById} from '../utils.js';
 import CountriesComponent from '../components/countries.js';
 import DeathsComponent from '../components/deaths.js';
 import RecoveriesComponent from '../components/recoveries.js';
+import GlobalComponent from '../components/global.js';
 export default class CountriesController {
 
   constructor(container, model, filter = null) {
@@ -11,11 +12,13 @@ export default class CountriesController {
     this._countries = null;
     this._deaths = null;
     this._recoveries = null;
+    this._global = null;
   }
 
   render() {
     const data = this._model.getData();
 
+    this._global = new GlobalComponent(data, this._filter);
     this._countries = new CountriesComponent(data, this._filter);
     this._deaths = new DeathsComponent(data, this._filter);
     this._recoveries = new RecoveriesComponent(data, this._filter);
@@ -26,7 +29,7 @@ export default class CountriesController {
       this.countriesClickHandler(evt, data);
     });
 
-  this._deaths.setClickHandler((evt) => {
+    this._deaths.setClickHandler((evt) => {
       this.countriesClickHandler(evt, data);
     });
 
@@ -62,21 +65,25 @@ export default class CountriesController {
     const newCountries = new CountriesComponent(data, this._filter);
     const newDeaths = new DeathsComponent(data, this._filter);
     const newRecoveries = new RecoveriesComponent(data, this._filter);
+    const newGlobal = new GlobalComponent(data, this._filter);
     this._countries = newCountries;
     this._deaths = newDeaths;
     this._recoveries = newRecoveries;
+    this._global = newGlobal;
   }
 
   removeLists() {
     remove(this._countries);
     remove(this._deaths);
     remove(this._recoveries);
+    remove(this._global);
   }
 
   renderLists() {
     render(this._container, this._countries, RenderPosition.BEFOREEND);
     render(this._container, this._deaths, RenderPosition.BEFOREEND);
     render(this._container, this._recoveries, RenderPosition.BEFOREEND);
+    render(this._container, this._global, RenderPosition.BEFOREEND);
   }
 
 }

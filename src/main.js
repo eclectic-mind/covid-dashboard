@@ -4,7 +4,6 @@
 
 import {renameObjKeys} from './utils.js';
 
-import GlobalController from './controllers/global.js';
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
 import CovidModel from './models/covid.js';
@@ -112,13 +111,11 @@ fetch(`${END_POINT}/summary`)
 
 // создаем компоненты
 
-const global = new GlobalController(main, covidModel);
 const updated = new UpdatedController(main, covidModel);
 const countries = new CountriesController(main, covidModel);
 
 // отрисовываем компоненты на странице
 
-global.render();
 updated.render();
 countries.render();
 

@@ -4,11 +4,14 @@ import {filterById} from '../utils.js';
 export const makeRecRow = (countryData) => {
   const name = countryData.Country;
   const totalRec = countryData.TotalRecovered;
+  const todayRec = countryData.NewRecovered;
   const id = countryData.CountryCode;
   const trName = `c-${id}`;
   return (
     `<tr class="${trName}">
-      <td>${totalRec} recovered<br>${name}</td>
+      <td>${totalRec} recovered<br>
+      (${todayRec} today)<br>
+      ${name}</td>
     </tr>`
   );
 };
