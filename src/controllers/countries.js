@@ -26,7 +26,7 @@ export default class CountriesController {
       this.countriesClickHandler(evt, data);
     });
 
-    this._deaths.setClickHandler((evt) => {
+  this._deaths.setClickHandler((evt) => {
       this.countriesClickHandler(evt, data);
     });
 

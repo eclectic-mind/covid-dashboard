@@ -15,8 +15,8 @@ export const makeDeathRow = (countryData) => {
 
 export const makeDeathsTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
-  const sum = data.Global.TotalRecovered;
-  const countries = dataFiltered.Countries;
+  const sum = data.global.TotalDeaths;
+  const countries = dataFiltered.countries;
   const rows = countries.map((item) => makeDeathRow(item));
   
   return (

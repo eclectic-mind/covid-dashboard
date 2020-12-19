@@ -2,6 +2,8 @@
 
 // импортируем все нужные модели и контроллеры
 
+import {renameObjKeys} from './utils.js';
+
 import GlobalController from './controllers/global.js';
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
@@ -104,6 +106,7 @@ fetch(`${END_POINT}/summary`)
   .then((text) => {
     const api = JSON.parse(text);
     console.log(api);
+    const apiFixed = renameObjKeys(api);
     covidModel.setData(api);
     console.log(covidModel);
 

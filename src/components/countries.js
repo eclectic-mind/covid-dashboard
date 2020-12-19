@@ -15,7 +15,7 @@ export const makeCountryRow = (countryData, filter) => {
 };
 
 export const makeCountriesTableMarkup = (data, filter) => {
-  const countries = data.Countries;
+  const countries = data.countries;
   const rows = countries.map((item) => makeCountryRow(item, filter));
   return (
     `<div class="countries">

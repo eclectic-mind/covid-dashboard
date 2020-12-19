@@ -15,8 +15,8 @@ export const makeRecRow = (countryData) => {
 
 export const makeRecoveriesTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
-  const sum = data.Global.TotalRecovered;
-  const countries = dataFiltered.Countries;
+  const sum = data.global.TotalRecovered;
+  const countries = dataFiltered.countries;
   const rows = countries.map((item) => makeRecRow(item, filter));
   
   return (

@@ -58,9 +58,22 @@ export const filterByCountry = (data, filter) => {
 export const filterById = (data, filter) => {
   if (filter === null) return data;
   let result = {};
-  result.Global = data.Global;
-  let countriesArray = data.Countries;
+  result.global = data.global;
+  let countriesArray = data.countries;
   let filtered = countriesArray.filter((item) => item.CountryCode === filter);
-  result.Countries = filtered;
+  result.countries = filtered;
   return result;
+};
+
+export const firstLetterToLowerCase = (str) => {
+  return str[0].toLowerCase() + str.slice(1);
+};
+
+export const renameObjKeys = (obj) => {
+  for (var prop in obj) {
+    if (typeof prop === 'string') {
+      obj[firstLetterToLowerCase(prop)] = obj[prop];
+      delete obj[prop];
+    }
+  }
 };
