@@ -15,13 +15,27 @@ export const makeCountryRow = (countryData, filter) => {
   );
 };
 
+export const makeWorldRow = (data, filter) => {
+  const totalCases = data.global.totalConfirmed;
+  const todayCases = data.global.newConfirmed;
+  const isActive = filter === null ? `active` : ``;
+  return (
+    `<tr class="c-world ${isActive}">
+      <td class="quantity">${totalCases} (${todayCases} today)</td>
+      <td class="country-name">WHOLE WORLD</td>
+    </tr>`
+  );
+};
+
 export const makeCountriesTableMarkup = (data, filter) => {
   const countries = data.countries;
   const rows = countries.map((item) => makeCountryRow(item, filter));
+  const world = makeWorldRow(data, filter);
   return (
     `<div class="countries">
       <h4>Cases by Country/Region/Sovereignty</h4>
       <table class="countries__table">
+        ${world}
         ${rows}
       </table>
     </div>`
@@ -47,21 +61,5 @@ export default class Countries extends AbstractComponent {
   setClickHandler(handler) {
     this.getElement().addEventListener('click', handler);
   }
-
-/*
-  rerender(newElement) {
-    super.rerender(newElement);
-  }
-
-  updateCountriesList(data, filter) {
-    this._data = data;
-    this._filter = filter;
-    this.rerender();
-  }
- 
-  _onDataChange() {
-    this.rerender();
-  }
-  */
   
 }

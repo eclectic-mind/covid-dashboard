@@ -1,4 +1,4 @@
-import {render, replace, remove, RenderPosition, filterById} from '../utils.js';
+import {render, remove, RenderPosition} from '../utils.js';
 import CountriesComponent from '../components/countries.js';
 import DeathsComponent from '../components/deaths.js';
 import RecoveriesComponent from '../components/recoveries.js';
@@ -22,8 +22,6 @@ export default class CountriesController {
     this._countries = new CountriesComponent(data, this._filter);
     this._deaths = new DeathsComponent(data, this._filter);
     this._recoveries = new RecoveriesComponent(data, this._filter);
-    
-    // console.log('old filter', this._filter);
 
     this._countries.setClickHandler((evt) => {
       this.countriesClickHandler(evt, data);
@@ -43,7 +41,6 @@ export default class CountriesController {
   countriesClickHandler(evt, data) {
     this.onFilterChange(evt);
     this.countriesRerender(evt, data);
-    // elem.setClickHandler(this.countriesClickHandler);
   }
 
   countriesRerender(evt, data) {
@@ -56,9 +53,8 @@ export default class CountriesController {
     evt.preventDefault();
     const parent = evt.target.parentElement;
     const chosenCountry = parent.classList[0].slice(2);
-    const newFilter = chosenCountry.toUpperCase();
+    const newFilter = chosenCountry === 'world' ? null : chosenCountry.toUpperCase();
     this._filter = newFilter;
-    // console.log('newFilter', this._filter);
   }
 
   reCreateLists(data) {

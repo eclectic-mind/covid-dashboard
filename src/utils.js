@@ -1,5 +1,3 @@
-// здесь будут храниться все "служебные" простые функции и функции отрисовки
-
 export const RenderPosition = {
   AFTERBEGIN: `afterbegin`,
   BEFOREEND: `beforeend`,
@@ -42,7 +40,6 @@ export const replace = (newComponent, oldComponent) => {
 
 export const remove = (component) => {
   component.getElement().remove();
-  // component.removeElement();
 };
 
 export const filterByCountry = (data, filter) => {

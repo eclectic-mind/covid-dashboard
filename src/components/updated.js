@@ -1,7 +1,7 @@
 import AbstractComponent from './abstract-component.js';
 
 export const makeUpdatedMarkup = (date) => {
-  console.log(date, typeof date);
+  // console.log(date, typeof date);
   const month = +date.getMonth() + 1;
   const year = date.getFullYear();
   const day = date.getDate();

@@ -1,20 +1,12 @@
-// main.js - наш главный скрипт, который управляет всем приложением и собирает кусочки в единое целое
-
-// импортируем все нужные модели и контроллеры
-
 import {renameObjKeys} from './utils.js';
-
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
 import CovidModel from './models/covid.js';
 
 const END_POINT = `https://api.covid19api.com`;
-
-// находим наш #main - отправную точку приложения, что-то типа #root в Реакте
-
 const main = document.querySelector('#main');
 
-// моковые данные для тренировки - потом заменим их на реальные данные с сервера
+/*
 
 const mockRaw = 
 {
@@ -94,9 +86,9 @@ const mock =
 date: '2020-04-05T06:37:00Z'
 };
 
-const covidModel = new CovidModel();
+*/
 
-// получаем данные и запускаем их в модель
+const covidModel = new CovidModel();
 
 const loadData = () => {
   fetch(`${END_POINT}/summary`)
@@ -105,15 +97,10 @@ const loadData = () => {
     })
     .then((text) => {
       const api = JSON.parse(text);
-      console.log(api);
       renameObjKeys(api);
       renameObjKeys(api.global);
       api.countries.map((item) => renameObjKeys(item));
       covidModel.setData(api);
-      console.log(covidModel);
-
-      // создаём и отрисовываем компоненты 
-
       const updated = new UpdatedController(main, covidModel);
       const countries = new CountriesController(main, covidModel);
       updated.render();
