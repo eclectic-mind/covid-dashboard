@@ -23,7 +23,7 @@ export default class CountriesController {
     this._deaths = new DeathsComponent(data, this._filter);
     this._recoveries = new RecoveriesComponent(data, this._filter);
     
-    console.log('old filter', this._filter);
+    // console.log('old filter', this._filter);
 
     this._countries.setClickHandler((evt) => {
       this.countriesClickHandler(evt, data);
@@ -48,8 +48,8 @@ export default class CountriesController {
 
   countriesRerender(evt, data) {
     this.removeLists();
-    this.createLists(data);
-    this.renderLists();
+    this.reCreateLists(data);
+    this.render();
   }
 
   onFilterChange(evt) {
@@ -58,10 +58,10 @@ export default class CountriesController {
     const chosenCountry = parent.classList[0].slice(2);
     const newFilter = chosenCountry.toUpperCase();
     this._filter = newFilter;
-    console.log('newFilter', this._filter);
+    // console.log('newFilter', this._filter);
   }
 
-  createLists(data) {
+  reCreateLists(data) {
     const newCountries = new CountriesComponent(data, this._filter);
     const newDeaths = new DeathsComponent(data, this._filter);
     const newRecoveries = new RecoveriesComponent(data, this._filter);

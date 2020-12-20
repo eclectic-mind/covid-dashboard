@@ -97,28 +97,28 @@ date: '2020-04-05T06:37:00Z'
 const covidModel = new CovidModel();
 
 // получаем данные и запускаем их в модель
- 
-fetch(`${END_POINT}/summary`)
-  .then((response) => {
-    return response.text();
-  })
-  .then((text) => {
-    const api = JSON.parse(text);
-    console.log(api);
-    renameObjKeys(api);
-    renameObjKeys(api.global);
-    api.countries.map((item) => renameObjKeys(item));
-    covidModel.setData(api);
-    console.log(covidModel);
 
-// создаем компоненты
+const loadData = () => {
+  fetch(`${END_POINT}/summary`)
+    .then((response) => {
+      return response.text();
+    })
+    .then((text) => {
+      const api = JSON.parse(text);
+      console.log(api);
+      renameObjKeys(api);
+      renameObjKeys(api.global);
+      api.countries.map((item) => renameObjKeys(item));
+      covidModel.setData(api);
+      console.log(covidModel);
 
-const updated = new UpdatedController(main, covidModel);
-const countries = new CountriesController(main, covidModel);
+      // создаём и отрисовываем компоненты 
 
-// отрисовываем компоненты на странице
+      const updated = new UpdatedController(main, covidModel);
+      const countries = new CountriesController(main, covidModel);
+      updated.render();
+      countries.render();
+    });
+ };
 
-updated.render();
-countries.render();
-
-});
+loadData();
