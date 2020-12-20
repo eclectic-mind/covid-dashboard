@@ -2,10 +2,10 @@ import AbstractComponent from './abstract-component.js';
 import {filterById} from '../utils.js';
 
 export const makeRecRow = (countryData) => {
-  const name = countryData.Country;
-  const totalRec = countryData.TotalRecovered;
-  const todayRec = countryData.NewRecovered;
-  const id = countryData.CountryCode;
+  const name = countryData.country;
+  const totalRec = countryData.totalRecovered;
+  const todayRec = countryData.newRecovered;
+  const id = countryData.countryCode;
   const trName = `c-${id}`;
   return (
     `<tr class="${trName}">
@@ -18,7 +18,7 @@ export const makeRecRow = (countryData) => {
 
 export const makeRecoveriesTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
-  const sum = data.global.TotalRecovered;
+  const sum = data.global.totalRecovered;
   const countries = dataFiltered.countries;
   const rows = countries.map((item) => makeRecRow(item, filter));
   

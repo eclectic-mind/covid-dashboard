@@ -5,12 +5,12 @@ export const makeGlobalMarkup = (data, filter) => {
   let sum = 0;
   let todaySum = 0;
   if (filter === null) {
-    sum = data.global.TotalConfirmed;
-    todaySum = data.global.NewConfirmed;
+    sum = data.global.totalConfirmed;
+    todaySum = data.global.newConfirmed;
   } else {
     const countryData = filterById(data, filter);
-    sum = countryData.countries[0].TotalConfirmed;
-    todaySum = countryData.countries[0].NewConfirmed;
+    sum = countryData.countries[0].totalConfirmed;
+    todaySum = countryData.countries[0].newConfirmed;
   }
   return (
     `<div class="global_cases">

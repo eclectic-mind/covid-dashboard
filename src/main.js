@@ -105,7 +105,9 @@ fetch(`${END_POINT}/summary`)
   .then((text) => {
     const api = JSON.parse(text);
     console.log(api);
-    const apiFixed = renameObjKeys(api);
+    renameObjKeys(api);
+    renameObjKeys(api.global);
+    api.countries.map((item) => renameObjKeys(item));
     covidModel.setData(api);
     console.log(covidModel);
 

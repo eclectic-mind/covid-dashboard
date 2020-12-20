@@ -60,7 +60,7 @@ export const filterById = (data, filter) => {
   let result = {};
   result.global = data.global;
   let countriesArray = data.countries;
-  let filtered = countriesArray.filter((item) => item.CountryCode === filter);
+  let filtered = countriesArray.filter((item) => item.countryCode === filter);
   result.countries = filtered;
   return result;
 };
@@ -70,10 +70,10 @@ export const firstLetterToLowerCase = (str) => {
 };
 
 export const renameObjKeys = (obj) => {
-  for (var prop in obj) {
-    if (typeof prop === 'string') {
-      obj[firstLetterToLowerCase(prop)] = obj[prop];
-      delete obj[prop];
+  for (let key in obj) {
+    if (typeof key === 'string') {
+      obj[firstLetterToLowerCase(key)] = obj[key];
+      delete obj[key];
     }
   }
 };

@@ -1,12 +1,12 @@
 import AbstractComponent from './abstract-component.js';
 
 export const makeCountryRow = (countryData, filter) => {
-  const name = countryData.Country;
-  const totalCases = countryData.TotalConfirmed;
-  const todayCases = countryData.NewConfirmed;
-  const id = countryData.CountryCode.toLowerCase();
+  const name = countryData.country;
+  const totalCases = countryData.totalConfirmed;
+  const todayCases = countryData.newConfirmed;
+  const id = countryData.countryCode.toLowerCase();
   const trName = `c-${id}`;
-  const isActive = countryData.CountryCode === filter ? `active` : ``;
+  const isActive = countryData.countryCode === filter ? `active` : ``;
   return (
     `<tr class="${trName} ${isActive}">
       <td class="quantity">${totalCases} (${todayCases} today)</td>

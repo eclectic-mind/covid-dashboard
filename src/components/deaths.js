@@ -2,10 +2,10 @@ import AbstractComponent from './abstract-component.js';
 import {filterById} from '../utils.js';
 
 export const makeDeathRow = (countryData) => {
-  const name = countryData.Country;
-  const todayDeaths = countryData.NewDeaths;
-  const totalDeaths = countryData.TotalDeaths;
-  const id = countryData.CountryCode;
+  const name = countryData.country;
+  const todayDeaths = countryData.newDeaths;
+  const totalDeaths = countryData.totalDeaths;
+  const id = countryData.countryCode;
   const trName = `c-${id}`;
   return (
     `<tr class="${trName}">
@@ -18,7 +18,7 @@ export const makeDeathRow = (countryData) => {
 
 export const makeDeathsTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
-  const sum = data.global.TotalDeaths;
+  const sum = data.global.totalDeaths;
   const countries = dataFiltered.countries;
   const rows = countries.map((item) => makeDeathRow(item));
   
