@@ -1,5 +1,6 @@
 import AbstractComponent from './abstract-component.js';
 import Chart from "chart.js";
+import {filterById} from '../utils.js';
 
 import {
   select,
@@ -14,7 +15,14 @@ import {
   timeFormat
 } from 'd3';
 
+export const getCountryName = (data, filter) => {
+  const countryData = filterById(data, filter);
+  const name = countryData.country;
+  return name;
+};
+
 export function drawChart(country, startDate, endDate) {
+  
   const svg = select('.charts')
   .append('svg')
   .attr('width', 900)
@@ -95,7 +103,12 @@ export function drawChart(country, startDate, endDate) {
   // });
   
   return undefined;
-}
+};
+
+export const makeChartsMarkup = (data, filter) => {
+  const name = getCountryName(data, filter);
+  const markup = drawChart(name, startDate, endDate);
+};
 
 export default class Charts extends AbstractComponent {
 
@@ -106,7 +119,7 @@ export default class Charts extends AbstractComponent {
   }
 
   getTemplate() {
-    return drawChart(this._data, this._filter);
+    return makeChartsMarkup(this._data, this._filter);
   }
 
 }

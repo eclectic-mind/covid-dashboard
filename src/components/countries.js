@@ -29,11 +29,11 @@ export const makeWorldRow = (data, filter) => {
 
 export const makeCountriesTableMarkup = (data, filter) => {
   const countries = data.countries;
-  const rows = countries.map((item) => makeCountryRow(item, filter));
+  const rows = countries.map((item) => makeCountryRow(item, filter)).join('');
   const world = makeWorldRow(data, filter);
   return (
     `<div class="countries">
-      <h4>Cases by Country/Region/Sovereignty</h4>
+      <h4>Cases by Country / Region / Sovereignty</h4>
       <table class="countries__table">
         ${world}
         ${rows}

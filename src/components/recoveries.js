@@ -20,7 +20,7 @@ export const makeRecoveriesTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
   const sum = data.global.totalRecovered;
   const countries = dataFiltered.countries;
-  const rows = countries.map((item) => makeRecRow(item, filter));
+  const rows = countries.map((item) => makeRecRow(item, filter)).join('');
   
   return (
     `<div class="recoveries">
