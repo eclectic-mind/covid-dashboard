@@ -9,11 +9,18 @@
 	padding: 0;
 	margin: 0;
   box-sizing: border-box;
+
+  color: wheat;
 }
 
 *:focus
 {
   outline: none;
+}
+
+html {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -22,6 +29,10 @@ body {
   font-weight: 400;
   background-color: black;
   font-family: 'Quicksand', sans-serif;
+
+  height: 100vh;
+  padding: 0;
+  ;
 }
 
 .grid-container {
@@ -29,13 +40,15 @@ body {
   grid-template-columns: 1fr 3fr repeat(2, 1fr);
   grid-template-rows: 0.3fr 0.5fr 2fr 1fr 0.3fr;
   gap: 5px 5px;
-  width: 90%;
-  max-width: 1240px;
+  /* width: 90%;
+  max-width: 1240px; */
+  width: 100vw;
   min-width: 500px;
   margin: 0px auto 0px auto;
   height: 100vh;
-  transition: 1.5s;
+  transition: .5s;
   padding: 0;
+  margin: 0;
   grid-template-areas:
     "header header header header"
     "global_cases map deaths recoveries"
@@ -128,6 +141,8 @@ body {
   background-color: rgb(64, 64, 64);
   }
 .charts {
+  overflow-x: scroll;
+  overflow-y: scroll;
   display: grid;
     grid-template-columns: 0.3fr 1fr 0.3fr;
     grid-template-rows: 1.7fr 0.4fr;
@@ -137,12 +152,43 @@ body {
         "charts__left charts__input charts__right";
     grid-area: charts;
 }
+svg {
+  display: block;
+}
+rect {
+  fill: steelblue;
+}
+.y.axis line, .x.axis line {
+  fill : none;
+  stroke: #cfcfcf;
+}
+.x.axis .tick:first-of-type text {
+  transform: translateX(10px);
+}
+.x.axis .tick:last-of-type text {
+  transform: translateX(-10px);
+}
+.y.axis .tick:first-of-type text {
+  transform: translateY(-5px);
+}
+.y.axis .tick:last-of-type text {
+  transform: translateY(0px);
+}
+.axis path,
+.axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
+}
+
 
 .charts__diagram { grid-area: charts__diagram; }
 .charts__left { grid-area: charts__left; }
 .charts__right { grid-area: charts__right; }
 .charts__input { grid-area: charts__input; }
 .countries {
+  overflow-x: scroll;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: 0.2fr 1fr 0.2fr;
   grid-template-rows: 1.8fr 0.2fr;
@@ -152,11 +198,14 @@ body {
         "countries__left countries__input countries__right";
   grid-area: countries;
 }
+
 .countries__table { grid-area: countries__table; }
 .countries__input { grid-area: countries__input; }
 .countries__left { grid-area: countries__left; }
 .countries__right { grid-area: countries__right; }
 .deaths {
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
     grid-template-rows: 1.8fr 0.2fr;
@@ -171,6 +220,8 @@ body {
 .deaths__right { grid-area: deaths__right; }
 .deaths__input { grid-area: deaths__input; }
 .recoveries {
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
     grid-template-rows: 1.8fr 0.2fr;
@@ -206,6 +257,7 @@ body {
 }
 
 .header, .footer, .map, .charts, .countries, .global_cases, .deaths, .recoveries, .updated {
+  
   background-color: rgb(64, 64, 64);
   border: #4c4c4c solid 0.1em;
   border-radius: 1px;

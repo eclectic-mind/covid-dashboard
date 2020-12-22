@@ -2,6 +2,10 @@ import {renameObjKeys} from './utils.js';
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
 import CovidModel from './models/covid.js';
+import drawChart from './controllers/charts.js';
+
+//отрисовка чарта
+drawChart();
 
 const END_POINT = `https://api.covid19api.com`;
 const main = document.querySelector('#main');
