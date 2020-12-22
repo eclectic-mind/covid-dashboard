@@ -16,9 +16,10 @@ import {
 } from 'd3';
 
 export const getCountryName = (data, filter) => {
+  if (filter === null) return;
   const dataFiltered = filterById(data, filter);
+  console.log(dataFiltered);
   const countryData = dataFiltered.countries[0];
-  console.log(countryData);
   const name = countryData.country;
   console.log(name);
   return name;
@@ -110,7 +111,8 @@ export function drawChart(country, startDate, endDate) {
 
 export const makeChartsMarkup = (data, filter) => {
   const name = getCountryName(data, filter);
-  const markup = drawChart(name, startDate, endDate);
+  const markup = drawChart(name);
+  return markup;
 };
 
 export default class Charts extends AbstractComponent {
