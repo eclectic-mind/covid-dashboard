@@ -56,9 +56,13 @@ export default class CountriesController {
   onFilterChange(evt) {
     evt.preventDefault();
     const parent = evt.target.parentElement;
-    const chosenCountry = parent.classList[0].slice(2);
-    const newFilter = chosenCountry === 'world' ? null : chosenCountry.toUpperCase();
-    this._filter = newFilter;
+    if (parent.classList.contains('deaths') || parent.classList.contains('recoveries')) {
+      return;
+    } else {
+      const chosenCountry = parent.classList[0].slice(2);
+      const newFilter = chosenCountry === 'world' ? null : chosenCountry.toUpperCase();
+      this._filter = newFilter;
+    }
   }
 
   reCreateLists(data) {
