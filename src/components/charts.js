@@ -16,8 +16,11 @@ import {
 } from 'd3';
 
 export const getCountryName = (data, filter) => {
-  const countryData = filterById(data, filter);
+  const dataFiltered = filterById(data, filter);
+  const countryData = dataFiltered.countries[0];
+  console.log(countryData);
   const name = countryData.country;
+  console.log(name);
   return name;
 };
 
