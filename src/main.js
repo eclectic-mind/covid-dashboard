@@ -3,16 +3,18 @@ import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
 import CovidModel from './models/covid.js';
 import drawChart from './controllers/charts.js';
+import drawMap from "./controllers/map";
 
 //отрисовка чарта
 drawChart();
-
+//отрисовка карты
+drawMap();
 const END_POINT = `https://api.covid19api.com`;
 const main = document.querySelector('#main');
 
 /*
 
-const mockRaw = 
+const mockRaw =
 {
   "Global": {
     "NewConfirmed": 100282,
@@ -51,7 +53,7 @@ const mockRaw =
 "Date": "2020-04-05T06:37:00Z"
 };
 
-const mock = 
+const mock =
 {
   global: {
     newConfirmed: 100282,
