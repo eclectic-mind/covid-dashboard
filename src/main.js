@@ -9,6 +9,7 @@ import drawMap from "./controllers/map";
 drawChart();
 //отрисовка карты
 drawMap();
+
 const END_POINT = `https://api.covid19api.com`;
 const main = document.querySelector('#main');
 
@@ -113,5 +114,10 @@ const loadData = () => {
       countries.render();
     });
  };
+
+
+//отрисовка чарта
+
+// drawChart();
 
 loadData();
