@@ -9,15 +9,14 @@
 	padding: 0;
 	margin: 0;
   box-sizing: border-box;
-  color: wheat;
 
+  color: wheat;
 }
 
 *:focus
 {
   outline: none;
 }
-
 
 html {
   margin: 0;
@@ -29,12 +28,11 @@ body {
   line-height: 1.5;
   font-weight: 400;
   background-color: black;
-
-  background-image: url(/assets/back_covid.png);
-  background-repeat: repeat;
-  background-size: contain;
   font-family: 'Quicksand', sans-serif;
 
+  height: 100vh;
+  padding: 0;
+  ;
 }
 
 .grid-container {
@@ -42,14 +40,15 @@ body {
   grid-template-columns: 1fr 3fr repeat(2, 1fr);
   grid-template-rows: 0.3fr 0.5fr 2fr 1fr 0.3fr;
   gap: 5px 5px;
-
+  /* width: 90%;
+  max-width: 1240px; */
   width: 100vw;
   min-width: 500px;
-  margin: 5% auto 0 auto;
-  height: 80vh;
-  transition: 1s;
+  margin: 0px auto 0px auto;
+  height: 100vh;
+  transition: .5s;
   padding: 0;
-
+  margin: 0;
   grid-template-areas:
     "header header header header"
     "global_cases map deaths recoveries"
@@ -60,97 +59,128 @@ body {
 }
 
 .header {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-      "header__logo header__title";
-  grid-area: header;
+display: grid;
+grid-template-columns: 0.8fr 1.2fr;
+grid-template-rows: 1fr;
+gap: 0px 0px;
+grid-template-areas:
+  "header__logo header__title"
+  "header__logo header__title";
+grid-area: header;
 
 }
 
 .header__logo {
-
-  grid-area: header__logo;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 2px;
+grid-area: header__logo;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+margin-top: 2px;
 }
 
 .header__title {
-  grid-area: header__title;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  color: #bdbdbd;
-  margin-left: 5px;
-  font-size: 130%;
+grid-area: header__title;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+color: #bdbdbd;
+margin-left: 5px;
+font-size: 130%;
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: 1.4fr 0.6fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "footer__git footer__year footer__rss";
-  grid-area: footer;
+display: grid;
+grid-template-columns: 1.4fr 0.6fr 1fr;
+grid-template-rows: 1fr;
+gap: 0px 0px;
+grid-template-areas:
+"footer__git footer__year footer__rss"
+"footer__git footer__year footer__rss";
+grid-area: footer;
 }
-.footer__git { 
-  grid-area: footer__git;
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: space-between;
-  justify-content: start;
-  align-items: center;
-  padding-left: 5px;
-  margin-top: 5px;
+.footer__git {
+grid-area: footer__git;
+display: flex;
+flex-wrap: nowrap;
+align-content: space-between;
+justify-content: start;
+align-items: center;
+padding-left: 5px;
+margin-top: 5px;
 }
 .footer__year {
-  grid-area: footer__year;
-  margin: 15px auto;
-  padding: 0px 5px;
+grid-area: footer__year;
+margin: 15px auto;
+padding: 0px 5px;
 }
-.footer__rss { 
-  grid-area: footer__rss;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.footer__rss {
+grid-area: footer__rss;
+display: flex;
+justify-content: flex-end;
+align-items: center;
 }
 .map {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1.85fr 0.15fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "map__image map__image map__image"
-        "map__left map__input map__right";
-    grid-area: map;
+display: block;
+grid-template-columns: 1fr 2fr 1fr;
+grid-template-rows: 1.85fr 0.15fr;
+gap: 0px 0px;
+grid-template-areas:
+    "map__image map__image map__image"
+    "map__left map__input map__right";
+grid-area: map;
+overflow: hidden;
 }
-.map__image { grid-area: map__image; }
-.map__input { grid-area: map__input; }
-.map__left { grid-area: map__left; }
-.map__right { grid-area: map__right; }
-.global_cases { 
+/*.map__image { grid-area: map__image; }*/
+/*.map__input { grid-area: map__input; }*/
+/*.map__left { grid-area: map__left; }*/
+/*.map__right { grid-area: map__right; }*/
+.global_cases {
   grid-area: global_cases;
   background-color: rgb(64, 64, 64);
 }
-.updated { 
+.updated {
   grid-area: updated;
   background-color: rgb(64, 64, 64);
-}
-
+  }
 .charts {
+  overflow-x: scroll;
+  overflow-y: scroll;
   display: grid;
-  grid-template-columns: 0.3fr 1fr 0.3fr;
-  grid-template-rows: 1.7fr 0.4fr;
-  gap: 0px 0px;
+    grid-template-columns: 0.3fr 1fr 0.3fr;
+    grid-template-rows: 1.7fr 0.4fr;
+    gap: 0px 0px;
     grid-template-areas:
-      "charts__diagram charts__diagram charts__diagram"
-      "charts__left charts__input charts__right";
-  grid-area: charts;
+        "charts__diagram charts__diagram charts__diagram"
+        "charts__left charts__input charts__right";
+    grid-area: charts;
+}
+svg {
+  display: block;
+}
+rect {
+  fill: steelblue;
+}
+.y.axis line, .x.axis line {
+  fill : none;
+  stroke: #cfcfcf;
+}
+.x.axis .tick:first-of-type text {
+  transform: translateX(10px);
+}
+.x.axis .tick:last-of-type text {
+  transform: translateX(-10px);
+}
+.y.axis .tick:first-of-type text {
+  transform: translateY(-5px);
+}
+.y.axis .tick:last-of-type text {
+  transform: translateY(0px);
+}
+.axis path,
+.axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
 }
 
 
@@ -158,10 +188,9 @@ body {
 .charts__left { grid-area: charts__left; }
 .charts__right { grid-area: charts__right; }
 .charts__input { grid-area: charts__input; }
-
-
 .countries {
-
+  overflow-x: scroll;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: 0.2fr 1fr 0.2fr;
   grid-template-rows: 1.8fr 0.2fr;
@@ -172,265 +201,111 @@ body {
   grid-area: countries;
 }
 
+.countries__table { grid-area: countries__table; }
+.countries__input { grid-area: countries__input; }
+.countries__left { grid-area: countries__left; }
+.countries__right { grid-area: countries__right; }
 .deaths {
   overflow-x: hidden;
   overflow-y: scroll;
-
+  display: grid;
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    grid-template-rows: 1.8fr 0.2fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "deaths__table deaths__table deaths__table"
+        "deaths__left deaths__input deaths__right";
+    grid-area: deaths;
+}
+.deaths__table { grid-area: deaths__table; }
+.deaths__left { grid-area: deaths__left; }
+.deaths__right { grid-area: deaths__right; }
+.deaths__input { grid-area: deaths__input; }
 .recoveries {
   overflow-x: hidden;
   overflow-y: scroll;
+  display: grid;
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    grid-template-rows: 1.8fr 0.2fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "recov__table recov__table recov__table"
+        "recov__left recov__input recov__right";
+    grid-area: recoveries;
+}
+.recov__table { grid-area: recov__table; }
+.recov__input { grid-area: recov__input; }
+.recov__left { grid-area: recov__left; }
+.recov__right { grid-area: recov__right; }
 
-  transition: 3s; 
+.footer-icon a img {
+  height: 1.5em;
 }
 
-.header, .footer, .map, .charts, .countries, .global_cases, .deaths, .recoveries, .updated, .detail {
+.footer-icon a:hover {
+  transform: scale(1.1);
+  filter: invert(1);
+  transition: all 1s ease-in-out;
+}
+
+.header__logo a img {
+  height: 2em;
+  width: auto;
+}
+
+.header__logo a img:hover {
+  transform: rotate(360deg);
+  transition: 3s;
+}
+
+.header, .footer, .map, .charts, .countries, .global_cases, .deaths, .recoveries, .updated {
+
   background-color: rgb(64, 64, 64);
   border: #4c4c4c solid 0.1em;
   border-radius: 1px;
 }
 
-
-.countries__table, .recov__table, .deaths__table, .detail__table {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.exp-container {
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 70%;
   position: relative;
-}
-
-#detail {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: auto;
-	top: 0;
-	left: 0;
-	justify-content: center;
-	align-items: center;
-}
-
-.exp, .exp_turn {
-  visibility: hidden;
-  position: absolute;
-  right: 0;
-  border-radius: 100%;
-  border: 1px solid #959595;
-  background: #333;
-  width: 18px;
-  height: 18px;
-  line-height: 0;
-  padding-top: 2px;
-}
-
-.exp svg, .exp_turn svg {
-  padding-right: 1.5px;
-  margin-left: 3px;
-  fill: red;
-}
-
-.exp-turn-container:hover .exp_turn { 
-  visibility: visible;
-  cursor: pointer;
-}
-
-.exp-container:hover .exp { 
-  visibility: visible;
-  cursor: pointer;
-}
-
-.exp:hover, .exp_turn:hover { 
-  transform: scale(1.1);
-}
-
 }
 
 .input input{
   margin: 3px;
-
-  width: 100%;
+  max-width: 130px;
   background-color: transparent;
   border: solid 0.1em #4c4c4c;
   position: absolute;
-  border-radius: 2px;
-
 }
 
 .input input:hover, .input input:focus{
   background-color: #4c4c4c;
-
-
-.grid-container-detail {
-  display: grid;
-  position: relative;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.2fr 1.8fr;
-  gap: 2px 2px;
-  width: 98%;
-  max-width: 1240px;
-  min-width: 500px;
-  margin: 1% auto 0px auto;
-  height: 96vh;
-  transition: 1.5s;
-  padding: 0;
-  grid-template-areas:
-    "detail__head"
-    "detail__table";
 }
 
-.detail__head {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 2px 2px;
-  grid-template-areas:
-    "head__title head__country";
-  grid-area: detail__head;
+.btn-left {
+   display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 2px;
 }
 
-.head__title { grid-area: head__title; }
-
-.head__country { grid-area: head__country; }
-
-.detail__table { grid-area: detail__table; }
-
-.caption {
-  position: absolute;
-  display: block;
-  color: #bdbdbd;
-  font-size: smaller;
-  line-height: 1em;
-  margin: auto 3px;
+.btn-right {
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 2px;
 }
 
-/* Медиа запросы */
-
-@media (min-width: 1280px) {
-  .grid-container {
-    max-width: 1280px;
-    overflow: hidden;
-    margin: 3% auto 0 auto;
-  }
+.btn-left:hover, .btn-right:hover {
+  transform: scale(1.05);
+  transition: all 0.5s ease-in-out;
+  filter: drop-shadow(2px 4px 6px #ffffff);
 }
 
-@media (max-width: 1024px) {
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.3fr 70vh 50vh 50vh 0.3fr;
-    gap: 5px 5px;
-    width: 98vw;
-    margin: 5px auto;
-    height: auto;
-    transition: 0.5s;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    grid-template-areas:
-        "global_cases header header header"
-        "countries map map map"
-        "deaths deaths recoveries recoveries"
-        "charts charts charts charts"
-        "updated footer footer footer";
-  }
-
-  .header {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "header__logo header__title";
-    grid-area: header;
-  }
-  
-  .map {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1.8fr 0.2fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "map__image map__image map__image"
-        "map__left map__input map__right";
-    grid-area: map;
-  }
-
-  .charts {
-    display: grid;
-    grid-template-columns: 0.3fr 1fr 0.3fr;
-    grid-template-rows: 1.8fr 0.2fr;
-    gap: 0px 0px;
-      grid-template-areas:
-        "charts__diagram charts__diagram charts__diagram"
-        "charts__left charts__input charts__right";
-    grid-area: charts;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.3fr 70vh 1fr 50vh 50vh 50vh 50vh 0.3fr;
-    gap: 5px 5px;
-    width: 98vw;
-    margin: 5px auto;
-    height: auto;
-    transition: 0.5s;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    grid-template-areas:
-        "header header" 
-        "map map"
-        "global_cases updated"
-        "countries countries"
-        "deaths deaths"
-        "recoveries recoveries"
-        "charts charts"
-        "footer footer";
-  }
-
-  .header {
-    display: grid;
-    grid-template-columns: 0.15fr 1.85fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "header__logo header__title";
-    grid-area: header;
-  }
-  
-  .map {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1.8fr 0.2fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "map__image map__image map__image"
-        "map__left map__input map__right";
-    grid-area: map;
-  }
-
-  .charts {
-    display: grid;
-    grid-template-columns: 0.3fr 1fr 0.3fr;
-    grid-template-rows: 1.8fr 0.2fr;
-    gap: 0px 0px;
-      grid-template-areas:
-        "charts__diagram charts__diagram charts__diagram"
-        "charts__left charts__input charts__right";
-    grid-area: charts;
-  }
-}
-
-@media (max-width: 500px) {
-  overflow: scroll;
-  width: 500px;
-}
-=======
 /*все для карты*/
 .map {
   /*display: table;*/
@@ -489,5 +364,4 @@ body {
   transform: rotate(45deg);
   margin-left: -.7em;
 }
-
 
