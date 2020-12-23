@@ -55,88 +55,90 @@ body {
     "countries map deaths recoveries"
     "countries map charts charts"
     "updated footer charts charts";
+
 }
 
 .header {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-      "header__logo header__title"
-      "header__logo header__title";
-  grid-area: header;
+display: grid;
+grid-template-columns: 0.8fr 1.2fr;
+grid-template-rows: 1fr;
+gap: 0px 0px;
+grid-template-areas:
+  "header__logo header__title"
+  "header__logo header__title";
+grid-area: header;
 
 }
 
 .header__logo {
-  grid-area: header__logo;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 2px;
+grid-area: header__logo;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+margin-top: 2px;
 }
 
 .header__title {
-  grid-area: header__title;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  color: #bdbdbd;
-  margin-left: 5px;
-  font-size: 130%;
+grid-area: header__title;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+color: #bdbdbd;
+margin-left: 5px;
+font-size: 130%;
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: 1.4fr 0.6fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "footer__git footer__year footer__rss"
-    "footer__git footer__year footer__rss";
-  grid-area: footer;
+display: grid;
+grid-template-columns: 1.4fr 0.6fr 1fr;
+grid-template-rows: 1fr;
+gap: 0px 0px;
+grid-template-areas:
+"footer__git footer__year footer__rss"
+"footer__git footer__year footer__rss";
+grid-area: footer;
 }
-.footer__git { 
-  grid-area: footer__git;
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: space-between;
-  justify-content: start;
-  align-items: center;
-  padding-left: 5px;
-  margin-top: 5px;
+.footer__git {
+grid-area: footer__git;
+display: flex;
+flex-wrap: nowrap;
+align-content: space-between;
+justify-content: start;
+align-items: center;
+padding-left: 5px;
+margin-top: 5px;
 }
 .footer__year {
-  grid-area: footer__year;
-  margin: 15px auto;
-  padding: 0px 5px;
+grid-area: footer__year;
+margin: 15px auto;
+padding: 0px 5px;
 }
-.footer__rss { 
-  grid-area: footer__rss;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.footer__rss {
+grid-area: footer__rss;
+display: flex;
+justify-content: flex-end;
+align-items: center;
 }
 .map {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1.85fr 0.15fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "map__image map__image map__image"
-        "map__left map__input map__right";
-    grid-area: map;
+display: block;
+grid-template-columns: 1fr 2fr 1fr;
+grid-template-rows: 1.85fr 0.15fr;
+gap: 0px 0px;
+grid-template-areas:
+    "map__image map__image map__image"
+    "map__left map__input map__right";
+grid-area: map;
+overflow: hidden;
 }
-.map__image { grid-area: map__image; }
-.map__input { grid-area: map__input; }
-.map__left { grid-area: map__left; }
-.map__right { grid-area: map__right; }
-.global_cases { 
+/*.map__image { grid-area: map__image; }*/
+/*.map__input { grid-area: map__input; }*/
+/*.map__left { grid-area: map__left; }*/
+/*.map__right { grid-area: map__right; }*/
+.global_cases {
   grid-area: global_cases;
   background-color: rgb(64, 64, 64);
 }
-.updated { 
+.updated {
   grid-area: updated;
   background-color: rgb(64, 64, 64);
   }
@@ -253,11 +255,11 @@ shape-rendering: crispEdges;
 
 .header__logo a img:hover {
   transform: rotate(360deg);
-  transition: 3s; 
+  transition: 3s;
 }
 
 .header, .footer, .map, .charts, .countries, .global_cases, .deaths, .recoveries, .updated {
-  
+
   background-color: rgb(64, 64, 64);
   border: #4c4c4c solid 0.1em;
   border-radius: 1px;
@@ -282,7 +284,7 @@ shape-rendering: crispEdges;
 
 .input input:hover, .input input:focus{
   background-color: #4c4c4c;
-} 
+}
 
 .btn-left {
    display: flex;
@@ -303,3 +305,63 @@ shape-rendering: crispEdges;
   transition: all 0.5s ease-in-out;
   filter: drop-shadow(2px 4px 6px #ffffff);
 }
+
+/*все для карты*/
+.map {
+  /*display: table;*/
+  /*height: 600px;*/
+  /*width: 600px;*/
+}
+#map {
+  height: 100%;
+  width: 100%;
+  /*display: table-column;*/
+}
+
+
+.icon-marker {
+
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 3.6em;
+  height: 3.6em;
+  font-size: .7em;
+  font-weight: bold;
+  background-color: darkred;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, .9);
+}
+
+.icon-marker:hover .icon-marker-tooltip {
+  display: block;
+}
+
+.icon-marker-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  width: 16em;
+  font-size: 1.4em;
+  padding: 1em;
+  background-color: #292929;
+  border-radius: .4em;
+  margin-bottom: 1em;
+  box-shadow: 0 3px 5px rgba(255, 255, 255, .9);
+}
+
+.icon-marker-tooltip:before {
+  display: block;
+  position: absolute;
+  bottom: -.6em;
+  left: 50%;
+  content: '';
+  width: 1.4em;
+  height: 1.4em;
+  background-color: #292929;
+  transform: rotate(45deg);
+  margin-left: -.7em;
+}
+
