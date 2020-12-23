@@ -1,68 +1,39 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
-
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<!-- Шрифты -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-
 	<!-- Иконка шапки сайта -->
 	<link rel="shortcut icon" href="assets/icon/favicon.png" type="image/png">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
 
-	<!-- Некоторый скрипт-->
-	<script src="js/script.js">
-	</script>
 
 	<title>Covid19 Dashboard</title>
-
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Шрифты -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Иконка шапки сайта -->
-  <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/png">
-
-  <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css"/>
-
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet'/>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-
-  <title>Covid19 Dashboard</title>
-
 </head>
 
 <body>
-	<div class="grid-container">
 
-    <!-- header -->
-
+	<div class="grid-container" id="main">
 		<div class="header">
 			<div class="header__logo">
 				<a href="#">
 					<img src="assets/icon/favicon.png" alt="COVID-19" title="COVID-19">
-          </a>
-        </div>
-      <div class="header__title">
-        <div class="title">
-          <h1>COVID-19 Dashboard</h1>
-        </div>
+        </a>
+      </div>
+    <div class="header__title">
+      <div class="title">
+        <h1>COVID-19 Dashboard</h1>
       </div>
     </div>
-
-    <!-- footer -->
-
-    <div class="footer exp-container">
+  </div>
+  <div class="footer">
       <div class="footer__git footer-icon">
         <a href="https://github.com/NadineKhis">
           <img src="assets/icon/github.png" alt="github-NadineKhis" title="NadineKhis">
@@ -77,57 +48,18 @@
           <img src="assets/icon/github.png" alt="github-MishynPavel" title="MishynPavel">
         </a>
       </div>
-      <div class="footer__year">
-        <h1>2020</h1>
-      </div>
+      <div class="footer__year"><h1>2020</h1></div>
       <div class="footer__rss footer-icon">
         <a href="https://https://rs.school/js/">
-          <img src="assets/icon/rs_school_js.svg" alt="rss" title="RSS">
+          <img src="assets/icon/rs_school_js.svg" alt="rss">
         </a>
       </div>
     </div>
 
-    <!-- map -->
+</div>
 
-    <div class="map exp-container">
-      <a class="exp" title="detail" onclick="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-      <div class="map__image">
-      </div>
-      <div class="map__input input">
-        <input type="text" title="Search">
-      </div>
-      <div class="map__left btn-left">
-        <a href="#">
-          <img src="assets/icon/icon_left.png" alt="left">
-        </a>
-      </div>
-      <div class="map__right btn-right">
-        <a href="#">
-          <img src="assets/icon/icon_right.png" alt="right">
-        </a>
-      </div>
-    </div>
+<script type="text/javascript" src="bundle.js"></script>
 
-    <!-- global_cases -->
-
-    <div class="global_cases exp-container">
-      <div class="caption__cases caption">
-        <h5>Global Cases</h5>
-      </div>
-      <a class="exp" title="detail" onclick="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-    </div>
-
-    <!-- updated -->
-
+</body>
 
 </html>
