@@ -1,5 +1,3 @@
-// здесь будут храниться все "служебные" простые функции и функции отрисовки
-
 export const RenderPosition = {
   AFTERBEGIN: `afterbegin`,
   BEFOREEND: `beforeend`,
@@ -42,5 +40,37 @@ export const replace = (newComponent, oldComponent) => {
 
 export const remove = (component) => {
   component.getElement().remove();
-  component.removeElement();
+};
+
+export const filterByCountry = (data, filter) => {
+  if (filter === null) return data;
+  let result = {};
+  result.global = data.global;
+  let countriesArray = data.countries;
+  let filtered = countriesArray.filter((item) => item.country === filter);
+  result.countries = filtered;
+  return result;
+};
+
+export const filterById = (data, filter) => {
+  if (filter === null) return data;
+  let result = {};
+  result.global = data.global;
+  let countriesArray = data.countries;
+  let filtered = countriesArray.filter((item) => item.countryCode === filter);
+  result.countries = filtered;
+  return result;
+};
+
+export const firstLetterToLowerCase = (str) => {
+  return str[0].toLowerCase() + str.slice(1);
+};
+
+export const renameObjKeys = (obj) => {
+  for (let key in obj) {
+    if (typeof key === 'string') {
+      obj[firstLetterToLowerCase(key)] = obj[key];
+      delete obj[key];
+    }
+  }
 };
