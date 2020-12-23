@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +21,25 @@
 	</script>
 
 	<title>Covid19 Dashboard</title>
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Иконка шапки сайта -->
+  <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/png">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css"/>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet'/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+  <title>Covid19 Dashboard</title>
+
 </head>
 
 <body>
@@ -109,164 +129,5 @@
 
     <!-- updated -->
 
-    <div class="updated exp-container">
-      <div class="caption__updated caption">
-        <h5>Last Updated</h5>
-      </div>
-      <a class="exp" title="detail" onclick="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-    </div>
-
-    <!-- charts -->
-
-    <div class="charts exp-container">
-      <a class="exp" title="detail" onclick="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-      <div class="charts__diagram">
-
-      </div>
-      <div class="charts__left btn-left">
-        <a href="#">
-          <img src="assets/icon/icon_left.png" alt="left">
-        </a>
-      </div>
-      <div class="charts__right btn-right">
-        <a href="#">
-          <img src="assets/icon/icon_right.png" alt="right">
-        </a>
-      </div>
-      <div class="charts__input input">
-        <input type="text" title="Search">
-      </div>
-    </div>
-
-    <!-- countries -->
-
-    <div class="countries exp-container">
-      <div class="caption__container caption">
-        <h5>Cases by</h5>
-      </div>
-      <a class="exp" title="detail" onmousedown="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-      <div class="countries__table table">
-
-      </div>
-      <div class="countries__input input">
-        <input type="text" title="Search">
-      </div>
-      <div class="countries__left btn-left">
-        <a href="#">
-          <img src="assets/icon/icon_left.png" alt="left">
-        </a>
-      </div>
-      <div class="countries__right btn-right">
-        <a href="#">
-          <img src="assets/icon/icon_right.png" alt="right">
-        </a>
-      </div>
-    </div>
-
-    <!-- deaths --> 
-
-    <div class="deaths exp-container">
-      <div class="caption__deaths caption">
-        <h5>Global Deaths</h5>
-      </div>
-      <a class="exp" title="detail" onclick="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-      <div class="deaths__table table">
-
-      </div>
-      <div class="deaths__left btn-left">
-        <a href="#">
-          <img src="assets/icon/icon_left.png" alt="left">
-        </a>
-      </div>
-      <div class="deaths__right btn-right">
-        <a href="#">
-          <img src="assets/icon/icon_right.png" alt="right">
-        </a>
-      </div>
-      <div class="deaths__input input">
-        <input type="text" title="Search">
-      </div>
-    </div>
-
-    <!-- recoveries -->
-
-    <div class="recoveries exp-container">
-      <div class="caption__recoveries caption">
-        <h5>Recoveries</h5>
-      </div>
-      <a class="exp" title="detail" onclick="viewDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" exmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-      <div class="recov__table table">
-
-      </div>
-      <div class="recov__input input">
-        <input type="text" title="Search">
-      </div>
-      <div class="recov__left btn-left">
-        <a href="#">
-          <img src="assets/icon/icon_left.png" alt="left">
-        </a>
-      </div>
-      <div class="recov__right btn-right">
-        <a href="#">
-          <img src="assets/icon/icon_right.png" alt="right">
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Таблица(ы), которые раскрываются на весь экран -->
-  <div id="detail" onclick="hideDetail()">
-    <div class="grid-container-detail exp-turn-container detail">
-      <a class="exp_turn" title="turn" onclick="hideDetail()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
-          <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z">
-          </path>
-        </svg>
-      </a>
-      <div class="detail__head"> 
-        <!-- Сюда передавать заголовок, того что развернули -->
-        <div class="head__title">
-          <h5></h5>
-        </div>
-        <!-- Сюда передавать страну -->
-        <div class="head__country">
-        <h5></h5>
-        </div>
-      </div>
-      <!-- Сдесь данные -->
-      <div class="detail__table detail__countries detail__deaths detail__recoveries detail__charts table">
-
-      </div>
-    </div>
-  </div>
-
-<script type="text/javascript" src="./bundle.js"></script>
-
-</body>
 
 </html>
