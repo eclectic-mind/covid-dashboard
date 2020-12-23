@@ -2,6 +2,7 @@ import {renameObjKeys} from './utils.js';
 import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
 import CovidModel from './models/covid.js';
+import drawMap from "./controllers/map";
 // import drawChart from './controllers/charts.js';
 
 const END_POINT = `https://api.covid19api.com`;
@@ -9,7 +10,7 @@ const main = document.querySelector('#main');
 
 /*
 
-const mockRaw = 
+const mockRaw =
 {
   "Global": {
     "NewConfirmed": 100282,
@@ -48,7 +49,7 @@ const mockRaw =
 "Date": "2020-04-05T06:37:00Z"
 };
 
-const mock = 
+const mock =
 {
   global: {
     newConfirmed: 100282,
@@ -112,5 +113,7 @@ const loadData = () => {
 //отрисовка чарта
 
 // drawChart();
+
+drawMap();
 
 loadData();

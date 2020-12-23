@@ -1,5 +1,5 @@
 export default function drawMap() {
-  const mymap = L.map('map').setView([0, 0], 3);
+  const mymap = L.map('map').setView([0, 0], 2);
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmFkaW5la2hpcyIsImEiOiJja2loZGticTMwNzJxMnltbGRsdzRqZmw0In0.E8fOw826aYb03PGElEtyYQ', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
