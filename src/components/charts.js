@@ -5,6 +5,7 @@ import {filterById} from '../utils.js';
 import {
   select,
   csv,
+  json,
   scaleLinear,
   max,
   scaleBand,
@@ -18,19 +19,26 @@ import {
 export const getCountryName = (data, filter) => {
   if (filter === null) return;
   const dataFiltered = filterById(data, filter);
-  console.log(dataFiltered);
+  // console.log(dataFiltered);
   const countryData = dataFiltered.countries[0];
   const name = countryData.country;
-  console.log(name);
+  // console.log(name);
   return name;
 };
 
-export function drawChart(country, startDate, endDate) {
+export function drawChart(country) {
   
-  const svg = select('.charts')
+  //clean section charts
+  const charts = document.querySelector('.charts');
+  charts.innerHTML = '';
+  const chartWrapper = document.createElement('div');
+  chartWrapper.classList.add('csv__wrapper');
+  charts.appendChild(chartWrapper);
+
+  const svg = select('.csv__wrapper')
   .append('svg')
-  .attr('width', 900)
-  .attr('height', 500);
+  .attr('width', 480)
+  .attr('height', 300);
 
   const width = +svg.attr('width')
   const height = +svg.attr('height');
@@ -90,21 +98,26 @@ export function drawChart(country, startDate, endDate) {
           select(this).style('fill', 'steelblue');
       });
   };
-  console.log('from carts| csv: ', csv);
-      csv('./assets/covid-data.csv').then((data) => {
+
+  if(country === undefined) {
+    csv('./assets/covid-data.csv').then((data) => {
       data.forEach( d => {
           d.cases = +d.cases;
           d.date = new Date(d.date);
       });
       render(data);
+    });
+  } else {
+    const currDate = new Date();
+    let newCountry = country.toLowerCase();
+    json(`https://api.covid19api.com/country/${newCountry}/status/confirmed?from=2020-01-01T00:00:00Z&to=${currDate}`).then((data) => {
+    const newData = data.map( d => {
+      return { cases : +d.Cases,
+              date : new Date(d.Date)}
+      });
+    render(newData);
   });
-  // json(`https://api.covid19api.com/country/russia/status/confirmed?from=2020-01-01T00:00:00Z&to=2020-12-01T00:00:00Z`).then((data) => {
-  //     const newData = data.map( d => {
-  //         return { cases : +d.Cases,
-  //                 date : new Date(d.Date)}
-  //         });
-  //     render(newData);
-  // });
+  }
   
   return undefined;
 };

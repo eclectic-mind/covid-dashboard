@@ -142,17 +142,20 @@ overflow: hidden;
   grid-area: updated;
   background-color: rgb(64, 64, 64);
   }
+
+.csv__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .charts {
   overflow-x: scroll;
   overflow-y: scroll;
   display: grid;
-    grid-template-columns: 0.3fr 1fr 0.3fr;
-    grid-template-rows: 1.7fr 0.4fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "charts__diagram charts__diagram charts__diagram"
-        "charts__left charts__input charts__right";
-    grid-area: charts;
+  grid-area: charts;
+}
+tr {
+  cursor: pointer;
 }
 svg {
   display: block;
