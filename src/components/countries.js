@@ -9,8 +9,9 @@ export const makeCountryRow = (countryData, filter) => {
   const isActive = countryData.countryCode === filter ? `active` : ``;
   return (
     `<tr class="${trName} ${isActive}">
-      <td class="quantity">${totalCases} (${todayCases} today)</td>
       <td class="country-name">${name}</td>
+      <td class="quantity">${totalCases}
+      <br>(${todayCases} today)</td>
     </tr>`
   );
 };
@@ -21,8 +22,8 @@ export const makeWorldRow = (data, filter) => {
   const isActive = filter === null ? `active` : ``;
   return (
     `<tr class="c-world ${isActive}">
-      <td class="quantity">${totalCases} (${todayCases} today)</td>
       <td class="country-name">WHOLE WORLD</td>
+      <td class="quantity">${totalCases} (${todayCases} today)</td>
     </tr>`
   );
 };

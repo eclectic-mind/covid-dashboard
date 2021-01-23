@@ -3,14 +3,11 @@
   font-weight: inherit;
   font-family: inherit;
   font-style: inherit;
-  font-size: 100%;
   border: 0 none;
   outline: 0;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
-  color: wheat;
 }
 
 *:focus {
@@ -28,8 +25,18 @@ body {
   font-weight: 400;
   background-color: black;
   font-family: "Quicksand", sans-serif;
+  font-size: 14px;
   height: 100vh;
   padding: 0;
+  color: #c7c7b5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
+  color: #ffffff;
 }
 
 h1 {
@@ -38,6 +45,33 @@ h1 {
   margin: 0;
   padding: 0;
   line-height: 1.8em;
+}
+
+h2 {
+  font-size: 1.7em;
+  line-height: 1.2em;
+  margin: 0 0 10px 0;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+  margin: 10px;
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+a {
+  color: #ffe000;
+}
+
+strong {
+  font-weight: bold;
 }
 
 .grid-container {
@@ -217,12 +251,12 @@ rect {
   grid-area: charts__input;
 }
 .countries {
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: scroll;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 0.2fr 1fr 0.2fr;
   grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px;
+  gap: 0px 0px; */
   grid-template-areas:
     "countries__table countries__table countries__table"
     "countries__left countries__input countries__right";
@@ -230,7 +264,21 @@ rect {
 }
 
 .countries__table {
+  border-radius: 0 0 5px 5px;
+  width: 100%;
   grid-area: countries__table;
+  border-collapse: collapse;
+  border-top: solid 1px #2f2929;
+}
+
+.countries__table tr.active {
+  background-color: #ffe000;
+  color: #000000;
+  font-weight: bold;
+  border-collapse: collapse;
+}
+.countries__table td {
+  padding: 5px 10px;
 }
 .countries__input {
   grid-area: countries__input;
@@ -244,17 +292,25 @@ rect {
 .deaths {
   overflow-x: hidden;
   overflow-y: scroll;
-  display: grid;
+  /* display: grid; 
   grid-template-columns: 0.2fr 1fr 0.2fr;
   grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px;
+  gap: 0px 0px;*/
   grid-template-areas:
     "deaths__table deaths__table deaths__table"
     "deaths__left deaths__input deaths__right";
   grid-area: deaths;
 }
+.deaths h5 {
+  margin: 0 0 10px 10px;
+}
 .deaths__table {
+  width: 100%;
+  border-top: solid 1px #2f2929;
   grid-area: deaths__table;
+}
+.deaths__table td {
+  padding: 5px 10px 0px 10px;
 }
 .deaths__left {
   grid-area: deaths__left;
@@ -268,17 +324,25 @@ rect {
 .recoveries {
   overflow-x: hidden;
   overflow-y: scroll;
-  display: grid;
+  /* display: grid; 
   grid-template-columns: 0.2fr 1fr 0.2fr;
   grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px;
+  gap: 0px 0px; */
   grid-template-areas:
     "recov__table recov__table recov__table"
     "recov__left recov__input recov__right";
   grid-area: recoveries;
 }
+.recoveries h5 {
+  margin: 0 0 10px 10px;
+}
 .recov__table {
+  width: 100%;
+  border-top: solid 1px #2f2929;
   grid-area: recov__table;
+}
+.recov__table td {
+  padding: 5px 10px 5px 10px;
 }
 .recov__input {
   grid-area: recov__input;
@@ -309,17 +373,20 @@ rect {
 
 .header,
 .footer,
-.map,
 .charts,
+.updated,
+.global_cases {
+  background-color: #404040;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 .countries,
-.global_cases,
 .deaths,
 .recoveries,
-.updated {
-  background-color: rgb(64, 64, 64);
-  border: #4c4c4c solid 0.1em;
-  border-radius: 1px;
-  padding: 10px;
+.map {
+  background-color: #404040;
+  border-radius: 5px;
 }
 
 .input {

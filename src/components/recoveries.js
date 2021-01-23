@@ -9,9 +9,9 @@ export const makeRecRow = (countryData) => {
   const trName = `c-${id}`;
   return (
     `<tr class="${trName}">
-      <td>${totalRec} recovered<br>
-      (${todayRec} today)<br>
-      ${name}</td>
+      <td><strong>${name}</strong><br>
+      ${totalRec} recovered (${todayRec} today)
+      </td>
     </tr>`
   );
 };
@@ -19,13 +19,14 @@ export const makeRecRow = (countryData) => {
 export const makeRecoveriesTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
   const sum = data.global.totalRecovered;
+  const today = data.global.newRecovered;
   const countries = dataFiltered.countries;
   const rows = countries.map((item) => makeRecRow(item, filter)).join('');
   
   return (
     `<div class="recoveries">
-      <p>Global recoveries</p>
-      <h3>${sum}</h3>
+      <h4>Global recoveries:</h4>
+      <h5><strong>${sum}</strong> (${today} today)</h5>
       <table class="recov__table">
         ${rows}
       </table>

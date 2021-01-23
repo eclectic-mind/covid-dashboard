@@ -10,7 +10,7 @@ export const makeUpdatedMarkup = (date) => {
   return (
     `<div class="updated">
       <p>Last updated at</p>
-      <h4>${formattedDate}</h4>
+      <h3>${formattedDate}</h3>
     </div>`
   );
 };

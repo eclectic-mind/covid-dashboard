@@ -9,9 +9,9 @@ export const makeDeathRow = (countryData) => {
   const trName = `c-${id}`;
   return (
     `<tr class="${trName}">
-      <td>${totalDeaths} died<br>
-      (${todayDeaths} today)<br>
-      ${name}</td>
+      <td><strong>${name}</strong><br>
+      ${totalDeaths} died (${todayDeaths} today)<br>
+      </td>
     </tr>`
   );
 };
@@ -19,13 +19,14 @@ export const makeDeathRow = (countryData) => {
 export const makeDeathsTableMarkup = (data, filter) => {
   const dataFiltered = filterById(data, filter);
   const sum = data.global.totalDeaths;
+  const today = data.global.newDeaths;
   const countries = dataFiltered.countries;
   const rows = countries.map((item) => makeDeathRow(item)).join('');
   
   return (
     `<div class="deaths">
-      <p>Global deaths</p>
-      <h3>${sum}</h3>
+      <h4>Global deaths:</h4>
+      <h5><strong>${sum}</strong> (${today} today)</h5>
       <table class="deaths__table">
         ${rows}
       </table>
