@@ -41,7 +41,6 @@ export const makeCountriesTableMarkup = (data, filter) => {
     </div>`
   );
 };
-
 export default class Countries extends AbstractComponent {
 
  constructor(data, filter) {

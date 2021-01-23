@@ -3,7 +3,6 @@ import CountriesComponent from '../components/countries.js';
 import DeathsComponent from '../components/deaths.js';
 import RecoveriesComponent from '../components/recoveries.js';
 import GlobalComponent from '../components/global.js';
-import drawChart from '../components/charts.js';
 import ChartsComponent from '../components/charts.js';
 export default class CountriesController {
 

@@ -18,10 +18,10 @@ import {
 export const getCountryName = (data, filter) => {
   if (filter === null) return;
   const dataFiltered = filterById(data, filter);
-  console.log(dataFiltered);
+  // console.log(dataFiltered);
   const countryData = dataFiltered.countries[0];
   const name = countryData.country;
-  console.log(name);
+  // console.log(name);
   return name;
 };
 
@@ -90,7 +90,7 @@ export function drawChart(country, startDate, endDate) {
           select(this).style('fill', 'steelblue');
       });
   };
-  console.log('from carts| csv: ', csv);
+  // console.log('from carts| csv: ', csv);
       csv('./assets/covid-data.csv').then((data) => {
       data.forEach( d => {
           d.cases = +d.cases;

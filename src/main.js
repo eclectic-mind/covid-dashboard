@@ -3,15 +3,12 @@ import UpdatedController from './controllers/updated.js';
 import CountriesController from './controllers/countries.js';
 import CovidModel from './models/covid.js';
 import drawMap from "./controllers/map";
-// import drawChart from './controllers/charts.js';
 
 const END_POINT = `https://api.covid19api.com`;
-const AUTHORIZATION = `5cf9dfd5-3449-485e-b5ae-70a60e997864`;
-
+const TOKEN = `5cf9dfd5-3449-485e-b5ae-70a60e997864`;
 const main = document.querySelector('#main');
 
 /*
-
 const mockRaw =
 {
   "Global": {
@@ -95,11 +92,26 @@ date: '2020-04-05T06:37:00Z'
 const covidModel = new CovidModel();
 
 const loadData = () => {
-  headers.append(AUTHORIZATION);
-  fetch(`${END_POINT}/summary`)
-    .then((response) => {
+
+  return fetch(`${END_POINT}/summary`, {
+    method: 'GET',
+    headers: {
+      'Access-Control-Allow-Headers': 'X-Access-Token',
+      'X-Access-Token': TOKEN
+    }
+    }).then((response) => {
       return response.text();
     })
+  /*
+  fetch(`${END_POINT}/summary`)
+    .then((response) => {
+      response.headers.append({
+        'Access-Control-Allow-Headers': 'X-Access-Token',
+        'X-Access-Token': TOKEN
+      });
+      // response.headers.append(TOKEN);
+      return response.text();
+    }) */
     .then((text) => {
       const api = JSON.parse(text);
       renameObjKeys(api);
@@ -111,12 +123,7 @@ const loadData = () => {
       updated.render();
       countries.render();
     });
- };
-
-//отрисовка чарта
-
-// drawChart();
+};
 
 drawMap();
-
 loadData();

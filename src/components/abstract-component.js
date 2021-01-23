@@ -1,7 +1,4 @@
 import {createElement, remove, replace} from '../utils.js';
-
-// абстрактный компонент, от которого будут наследовать базовые методы все остальные компоненты
-
 export default class AbstractComponent {
   constructor() {
     if (new.target === AbstractComponent) {
@@ -40,11 +37,6 @@ export default class AbstractComponent {
   rerender(newElement) {
     const oldElement = this.getElement();
     replace(newElement, oldElement);
-    // const parent = oldElement.parentElement;
-    // this.removeElement();
-    // this.getElement().remove();
-    // const newElement = this.getElement();
-    // parent.replaceChild(newElement, oldElement);
   }
 
 }

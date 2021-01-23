@@ -24,7 +24,6 @@ export const makeGlobalMarkup = (data, filter) => {
     </div>`
   );
 };
-
 export default class Global extends AbstractComponent {
 
   constructor(data, filter) {

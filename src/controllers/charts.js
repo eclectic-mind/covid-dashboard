@@ -75,7 +75,7 @@ export default function drawChart(country, startDate, endDate) {
             select(this).style('fill', 'steelblue');
         });
     };
-    console.log('from carts| csv: ', csv);
+    // console.log('from carts| csv: ', csv);
         csv('./assets/covid-data.csv').then((data) => {
         data.forEach( d => {
             d.cases = +d.cases;
@@ -83,6 +83,7 @@ export default function drawChart(country, startDate, endDate) {
         });
         render(data);
     });
+   
     // json(`https://api.covid19api.com/country/russia/status/confirmed?from=2020-01-01T00:00:00Z&to=2020-12-01T00:00:00Z`).then((data) => {
     //     const newData = data.map( d => {
     //         return { cases : +d.Cases,

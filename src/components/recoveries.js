@@ -32,7 +32,6 @@ export const makeRecoveriesTableMarkup = (data, filter) => {
     </div>`
   );
 };
-
 export default class Recoveries extends AbstractComponent {
 
  constructor(data, filter) {

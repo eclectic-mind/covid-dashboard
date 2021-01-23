@@ -32,7 +32,6 @@ export const makeDeathsTableMarkup = (data, filter) => {
     </div>`
   );
 };
-
 export default class Deaths extends AbstractComponent {
 
  constructor(data, filter) {
