@@ -6,6 +6,8 @@ import drawMap from "./controllers/map";
 // import drawChart from './controllers/charts.js';
 
 const END_POINT = `https://api.covid19api.com`;
+const AUTHORIZATION = `5cf9dfd5-3449-485e-b5ae-70a60e997864`;
+
 const main = document.querySelector('#main');
 
 /*
@@ -93,6 +95,7 @@ date: '2020-04-05T06:37:00Z'
 const covidModel = new CovidModel();
 
 const loadData = () => {
+  headers.append(AUTHORIZATION);
   fetch(`${END_POINT}/summary`)
     .then((response) => {
       return response.text();
