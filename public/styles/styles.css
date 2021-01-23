@@ -83,15 +83,12 @@ strong {
   grid-template-columns: 1fr 3fr repeat(2, 1fr);
   grid-template-rows: 0.3fr 0.5fr 2fr 1fr 0.3fr;
   gap: 5px 5px;
-  /* width: 90%;
-  max-width: 1240px; */
   width: 100vw;
   min-width: 500px;
-  margin: 0px auto 0px auto;
   height: 100vh;
   transition: 0.5s;
-  padding: 0;
-  margin: 0;
+  padding: 5px;
+  margin: 0x;
   grid-template-areas:
     "header header header header"
     "global_cases map deaths recoveries"
@@ -184,13 +181,10 @@ strong {
   grid-area: map;
   overflow: hidden;
 }
-/*.map__image { grid-area: map__image; }*/
-/*.map__input { grid-area: map__input; }*/
-/*.map__left { grid-area: map__left; }*/
-/*.map__right { grid-area: map__right; }*/
+
 .global_cases {
   grid-area: global_cases;
-  background-color: rgb(64, 64, 64);
+  background-color: rgb(64 64 64 / 0.7);
 }
 .updated {
   grid-area: updated;
@@ -253,10 +247,6 @@ rect {
 .countries {
   overflow-x: hidden;
   overflow-y: scroll;
-  /* display: grid;
-  grid-template-columns: 0.2fr 1fr 0.2fr;
-  grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px; */
   grid-template-areas:
     "countries__table countries__table countries__table"
     "countries__left countries__input countries__right";
@@ -269,6 +259,10 @@ rect {
   grid-area: countries__table;
   border-collapse: collapse;
   border-top: solid 1px #2f2929;
+}
+
+tr:hover {
+  background-color: #191818;
 }
 
 .countries__table tr.active {
@@ -292,10 +286,6 @@ rect {
 .deaths {
   overflow-x: hidden;
   overflow-y: scroll;
-  /* display: grid; 
-  grid-template-columns: 0.2fr 1fr 0.2fr;
-  grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px;*/
   grid-template-areas:
     "deaths__table deaths__table deaths__table"
     "deaths__left deaths__input deaths__right";
@@ -310,7 +300,7 @@ rect {
   grid-area: deaths__table;
 }
 .deaths__table td {
-  padding: 5px 10px 0px 10px;
+  padding: 5px 10px;
 }
 .deaths__left {
   grid-area: deaths__left;
@@ -324,10 +314,6 @@ rect {
 .recoveries {
   overflow-x: hidden;
   overflow-y: scroll;
-  /* display: grid; 
-  grid-template-columns: 0.2fr 1fr 0.2fr;
-  grid-template-rows: 1.8fr 0.2fr;
-  gap: 0px 0px; */
   grid-template-areas:
     "recov__table recov__table recov__table"
     "recov__left recov__input recov__right";
@@ -342,7 +328,7 @@ rect {
   grid-area: recov__table;
 }
 .recov__table td {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
 }
 .recov__input {
   grid-area: recov__input;
@@ -352,12 +338,6 @@ rect {
 }
 .recov__right {
   grid-area: recov__right;
-}
-
-.footer-icon a:hover {
-  /* transform: scale(1.1);
-  filter: invert(1);
-  transition: all 1s ease-in-out; */
 }
 
 .header__logo a img {
@@ -376,7 +356,7 @@ rect {
 .charts,
 .updated,
 .global_cases {
-  background-color: #404040;
+  background-color: rgb(64 64 64 / 0.8);
   border-radius: 5px;
   padding: 10px;
 }
@@ -385,7 +365,7 @@ rect {
 .deaths,
 .recoveries,
 .map {
-  background-color: #404040;
+  background-color: rgb(64 64 64 / 0.8);
   border-radius: 5px;
 }
 
@@ -432,16 +412,9 @@ rect {
   filter: drop-shadow(2px 4px 6px #ffffff);
 }
 
-/*все для карты*/
-.map {
-  /*display: table;*/
-  /*height: 600px;*/
-  /*width: 600px;*/
-}
 #map {
   height: 100%;
   width: 100%;
-  /*display: table-column;*/
 }
 
 .icon-marker {
@@ -487,4 +460,46 @@ rect {
   background-color: #292929;
   transform: rotate(45deg);
   margin-left: -0.7em;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background-color: #404040;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #64645c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c7c7b5;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background: linear-gradient(120deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(240deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(0deg, #404040 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #c7c7b5;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background: linear-gradient(300deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(60deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(180deg, #404040 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #c7c7b5;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  background: linear-gradient(30deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(150deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(270deg, #404040 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #c7c7b5;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+  background: linear-gradient(210deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(330deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(90deg, #404040 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #c7c7b5;
 }

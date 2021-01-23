@@ -54,16 +54,19 @@ export default class CountriesController {
 
   onFilterChange(evt) {
     evt.preventDefault();
-    const parent = evt.target.parentElement;
-    if (parent.classList.contains('deaths') || parent.classList.contains('recoveries') || parent.classList.contains('countries')) {
-      return;
-    }
-    if (evt.target.classList.contains('deaths') || evt.target.classList.contains('recoveries') || evt.target.classList.contains('countries')) {
-      return;
-    } else {
-      const chosenCountry = parent.classList[0].slice(2);
-      const newFilter = chosenCountry === 'world' ? null : chosenCountry.toUpperCase();
-      this._filter = newFilter;
+    console.log(evt.target, evt.target.tagName);
+    if (evt.target.tagName === 'tr' || evt.target.closest('tr')) {
+        const parent = evt.target.closest('tr');
+      if (parent.classList.contains('deaths') || parent.classList.contains('recoveries') || parent.classList.contains('countries')) {
+        return;
+      }
+      if (evt.target.classList.contains('deaths') || evt.target.classList.contains('recoveries') || evt.target.classList.contains('countries')) {
+        return;
+      } else {
+        const chosenCountry = parent.classList[0].slice(2);
+        const newFilter = chosenCountry === 'world' ? null : chosenCountry.toUpperCase();
+        this._filter = newFilter;
+      }
     }
   }
 

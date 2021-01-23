@@ -1,5 +1,4 @@
 import AbstractComponent from './abstract-component.js';
-import Chart from "chart.js";
 import {filterById} from '../utils.js';
 
 import {
@@ -74,7 +73,9 @@ export function drawChart(country, startDate, endDate) {
               .attr('x', d => xScale(xValue(d)))
               .attr('height', d => (innerHeight - yScale(yValue(d))))
               .attr('width', xScale.bandwidth())
-              .attr('y', d => yScale(yValue(d)));
+              .attr('y', d => yScale(yValue(d)))
+              .attr('stroke', 'white')
+              .style('fill', '#ffe000');
               
       rect.append("svg:title")
           .text((d) => `${d.date.toLocaleDateString('en-US')} : ${format('.3s')(d.cases)}`);
@@ -83,11 +84,12 @@ export function drawChart(country, startDate, endDate) {
           event.stopPropagation();
       });
       rect.on('mouseover', function() {
-          select(this).style('fill', '#676767');
-          
+          select(this).style('fill', 'black');
+          select(this).style('stroke', 'black');
       });
       rect.on('mouseleave', function() {
-          select(this).style('fill', 'steelblue');
+          select(this).style('fill', '#ffe000');
+          select(this).style('stroke', 'white');
       });
   };
   // console.log('from carts| csv: ', csv);
@@ -106,7 +108,7 @@ export function drawChart(country, startDate, endDate) {
   //     render(newData);
   // });
   
-  return undefined;
+  // return undefined;
 };
 
 export const makeChartsMarkup = (data, filter) => {
