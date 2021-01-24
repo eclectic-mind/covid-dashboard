@@ -1,7 +1,4 @@
-import {createElement} from '../utils.js';
-
-// абстрактный компонент, от которого будут наследовать базовые методы все остальные компоненты
-
+import {createElement, remove, replace} from '../utils.js';
 export default class AbstractComponent {
   constructor() {
     if (new.target === AbstractComponent) {
@@ -36,16 +33,10 @@ export default class AbstractComponent {
   recoveryListeners() {
     throw new Error(`Abstract method not implemented: recoveryListeners`);
   }
-
-  /* этот метод надо будет переделать, он не очень рабочий
-
-  rerender() {
+  
+  rerender(newElement) {
     const oldElement = this.getElement();
-    const parent = oldElement.parentElement;
-    this.removeElement();
-    const newElement = this.getElement();
-    parent.replaceChild(newElement, oldElement);
+    replace(newElement, oldElement);
   }
 
-  */
 }
