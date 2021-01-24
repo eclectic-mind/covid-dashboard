@@ -81,7 +81,6 @@ strong {
   background-size: cover;
   display: grid;
   grid-template-columns: 1fr 3fr repeat(2, 1fr);
-  grid-template-rows: 0.3fr 0.5fr 2fr 1fr 0.3fr;
   gap: 5px 5px;
   width: 100vw;
   min-width: 500px;
@@ -247,16 +246,13 @@ rect {
 .countries {
   overflow-x: hidden;
   overflow-y: scroll;
-  grid-template-areas:
-    "countries__table countries__table countries__table"
-    "countries__left countries__input countries__right";
+  min-width: 220px;
   grid-area: countries;
 }
 
 .countries__table {
   border-radius: 0 0 5px 5px;
   width: 100%;
-  grid-area: countries__table;
   border-collapse: collapse;
   border-top: solid 1px #2f2929;
 }
@@ -286,9 +282,6 @@ tr:hover {
 .deaths {
   overflow-x: hidden;
   overflow-y: scroll;
-  grid-template-areas:
-    "deaths__table deaths__table deaths__table"
-    "deaths__left deaths__input deaths__right";
   grid-area: deaths;
 }
 .deaths h5 {
@@ -296,8 +289,9 @@ tr:hover {
 }
 .deaths__table {
   width: 100%;
+  border-collapse: collapse;
+  min-width: 180px;
   border-top: solid 1px #2f2929;
-  grid-area: deaths__table;
 }
 .deaths__table td {
   padding: 5px 10px;
@@ -314,9 +308,6 @@ tr:hover {
 .recoveries {
   overflow-x: hidden;
   overflow-y: scroll;
-  grid-template-areas:
-    "recov__table recov__table recov__table"
-    "recov__left recov__input recov__right";
   grid-area: recoveries;
 }
 .recoveries h5 {
@@ -324,8 +315,9 @@ tr:hover {
 }
 .recov__table {
   width: 100%;
+  border-collapse: collapse;
+  min-width: 180px;
   border-top: solid 1px #2f2929;
-  grid-area: recov__table;
 }
 .recov__table td {
   padding: 5px 10px;
@@ -502,4 +494,100 @@ tr:hover {
     linear-gradient(330deg, #404040 40%, rgba(0, 0, 0, 0) 41%),
     linear-gradient(90deg, #404040 30%, rgba(0, 0, 0, 0) 31%);
   background-color: #c7c7b5;
+}
+
+@media screen and (max-width: 1100px) {
+  .grid-container {
+    width: 100%;
+  }
+  .footer,
+  .footer__icon,
+  .footer__year {
+    align-items: flex-start;
+  }
+  .footer__git {
+    flex-wrap: wrap;
+  }
+  .footer__rss a img {
+    height: 30px;
+  }
+  .countries {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: 1100px) and (min-width: 700px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "global_cases deaths recoveries"
+      "countries deaths recoveries"
+      "map map map"
+      "charts charts charts"
+      "updated footer footer";
+  }
+  .map,
+  .charts {
+    min-height: 500px;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 200px 200px 400px 400px 400px 1fr;
+    grid-template-areas:
+      "header header"
+      "countries global_cases"
+      "countries updated"
+      "deaths recoveries"
+      "map map"
+      "charts charts"
+      "footer footer";
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .grid-container {
+    min-width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 300px 300px 300px 300px 300px 1fr;
+    grid-template-areas:
+      "header"
+      "global_cases"
+      "updated"
+      "countries"
+      "deaths"
+      "recoveries"
+      "map"
+      "charts"
+      "footer";
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer__rss {
+    order: 0;
+  }
+
+  .footer__git {
+    order: 2;
+  }
+
+  .footer__year {
+    order: 1;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    line-height: 1.3em;
+  }
+
+  h2 {
+    font-size: 1.35em;
+  }
 }

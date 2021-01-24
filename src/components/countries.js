@@ -23,7 +23,8 @@ export const makeWorldRow = (data, filter) => {
   return (
     `<tr class="c-world ${isActive}">
       <td class="country-name">WHOLE WORLD</td>
-      <td class="quantity">${totalCases} (${todayCases} today)</td>
+      <td class="quantity">${totalCases}<br>
+      (${todayCases} today)</td>
     </tr>`
   );
 };
